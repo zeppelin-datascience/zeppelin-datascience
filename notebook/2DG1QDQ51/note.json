@@ -85,7 +85,7 @@
     {
       "text": "{// Simple track to suppress outputs.\n    val numericalColumns \u003d spark.table(\"survey\").dtypes.filter(_._2 !\u003d \"StringType\").map(_._1)\n    val categoricalColumns \u003d spark.table(\"survey\").dtypes.filter(_._2 \u003d\u003d \"StringType\").map(_._1)\n    \n    val numBins \u003d z.textbox(\"막대 개수\", \"10\").toString\n    val selectedColumn \u003d z.select(\"컬럼\", numericalColumns(0), numericalColumns.map(x \u003d\u003e (x, x))).toString\n    val selectedGroup \u003d z.select(\"그룹\", categoricalColumns(0), categoricalColumns.map(x \u003d\u003e (x, x))).toString\n    \n    z.angularBind(\"numBins\", numBins) // Override the dynamic form \"numBins\".\n    z.angularBind(\"column\", selectedColumn)   // Override the dynamic form \"column\".\n    z.angularBind(\"group\", selectedGroup)\n    \n    z.run(\"20180519-003745_400359499\")  // !!! Copy and paste your paragraph ID!\n    \n    val numRows \u003d spark.table(\"survey\").count()\n    val values \u003d spark.table(\"survey\").select(selectedColumn)\n    \n    val avg \u003d values.selectExpr(s\"AVG(${selectedColumn})\").first.getDouble(0)\n    val numMissingValues \u003d values.where(s\"${selectedColumn} IS NULL\").count()\n    val missingRate \u003d 1.0 * numMissingValues / numRows\n    val fontSize \u003d (missingRate * 100).toInt\n    \n    z.angularBind(\"average\", avg.toString)\n    z.angularBind(\"fontSize\", fontSize)\n    z.angularBind(\"missingRate\", missingRate)\n\n    z.run(\"20180519-012245_1766247646\")\n}",
       "user": "anonymous",
-      "dateUpdated": "2018-05-19 03:23:29.549",
+      "dateUpdated": "2018-05-19 03:42:23.969",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -1053,9 +1053,9 @@
           "tooltip": "View in Spark web UI",
           "group": "spark",
           "values": [
-            "http://192.168.0.2:4040/jobs/job?id\u003d0",
-            "http://192.168.0.2:4040/jobs/job?id\u003d1",
-            "http://192.168.0.2:4040/jobs/job?id\u003d2"
+            "http://192.168.0.2:4040/jobs/job?id\u003d3",
+            "http://192.168.0.2:4040/jobs/job?id\u003d4",
+            "http://192.168.0.2:4040/jobs/job?id\u003d5"
           ],
           "interpreterSettingId": "spark"
         }
@@ -1064,8 +1064,8 @@
       "jobName": "paragraph_1526658878043_-388568099",
       "id": "20180519-003627_1725377296",
       "dateCreated": "2018-05-19 00:54:38.043",
-      "dateStarted": "2018-05-19 03:23:29.574",
-      "dateFinished": "2018-05-19 03:23:48.559",
+      "dateStarted": "2018-05-19 03:42:23.982",
+      "dateFinished": "2018-05-19 03:42:25.869",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1105,15 +1105,15 @@
       "jobName": "paragraph_1526660565752_2076561535",
       "id": "20180519-012245_1766247646",
       "dateCreated": "2018-05-19 01:22:45.752",
-      "dateStarted": "2018-05-19 03:23:48.629",
-      "dateFinished": "2018-05-19 03:23:48.632",
+      "dateStarted": "2018-05-19 03:42:25.860",
+      "dateFinished": "2018-05-19 03:42:25.866",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%sql\nWITH\ntarget (\nSELECT\n    ${column} AS x,\n    ${group} AS grp\nFROM ${table}\nWHERE ${column} IS NOT NULL  -- NULL 제거\n),\nstats (\nSELECT\n    MIN(x) AS x_min,\n    ${numBins} AS num_bins,\n    (MAX(x) - MIN(x)) / ${numBins} AS bin_width  -- bin 너비 계산\nFROM target\n),\nbin_tmp (\nSELECT\n    x, grp,\n    FLOOR((x - x_min) / bin_width) AS bin  -- 각 값이 어느 bin에 속하는지 계산\nFROM\n    target\n    CROSS JOIN stats\n),\nbin (\nSELECT\n    x, grp, \n    CASE WHEN bin \u003d num_bins THEN num_bins - 1 ELSE bin END AS bin  -- 마지막 bin의 범위를 90 ~ 99이 아닌 90 ~ 100이 되도록\nFROM\n    bin_tmp\n    CROSS JOIN stats\n),\nbin_stats (  -- 각 bin의 여러 통계량 계산 (x축에 나타낼 값들)\nSELECT\n    bin,\n    AVG(x) AS bin_avg,\n    MIN(x) AS bin_min,\n    MAX(x) AS bin_max,\n    MIN(bin_width) * bin AS bin_start,\n    MIN(bin_width) * (bin + 1) AS bin_end\nFROM\n    bin\n    CROSS JOIN stats\nGROUP BY bin\n),\nbin_grp (\nSELECT\n    bin, grp, COUNT(*) AS bin_grp_cnt\nFROM bin\nGROUP BY bin, grp\n)\nSELECT bin, grp, bin_grp_cnt, bin_avg, bin_min, bin_max, bin_start, bin_end\nFROM\n    bin_grp\n    JOIN bin_stats USING (bin)\nORDER BY bin, grp",
+      "text": "%sql\nWITH\ntarget (\nSELECT\n    ${column} AS x,\n    ${group} AS grp\nFROM survey\nWHERE ${column} IS NOT NULL  -- NULL 제거\n),\nstats (\nSELECT\n    MIN(x) AS x_min,\n    ${numBins} AS num_bins,\n    (MAX(x) - MIN(x)) / ${numBins} AS bin_width  -- bin 너비 계산\nFROM target\n),\nbin_tmp (\nSELECT\n    x, grp,\n    FLOOR((x - x_min) / bin_width) AS bin  -- 각 값이 어느 bin에 속하는지 계산\nFROM\n    target\n    CROSS JOIN stats\n),\nbin (\nSELECT\n    x, grp, \n    CASE WHEN bin \u003d num_bins THEN num_bins - 1 ELSE bin END AS bin  -- 마지막 bin의 범위를 90 ~ 99이 아닌 90 ~ 100이 되도록\nFROM\n    bin_tmp\n    CROSS JOIN stats\n),\nbin_stats (  -- 각 bin의 여러 통계량 계산 (x축에 나타낼 값들)\nSELECT\n    bin,\n    AVG(x) AS bin_avg,\n    MIN(x) AS bin_min,\n    MAX(x) AS bin_max,\n    MIN(bin_width) * bin AS bin_start,\n    MIN(bin_width) * (bin + 1) AS bin_end\nFROM\n    bin\n    CROSS JOIN stats\nGROUP BY bin\n),\nbin_grp (\nSELECT\n    bin, grp, COUNT(*) AS bin_grp_cnt\nFROM bin\nGROUP BY bin, grp\n)\nSELECT bin, grp, bin_grp_cnt, bin_avg, bin_min, bin_max, bin_start, bin_end\nFROM\n    bin_grp\n    JOIN bin_stats USING (bin)\nORDER BY bin, grp",
       "user": "anonymous",
-      "dateUpdated": "2018-05-19 03:23:48.733",
+      "dateUpdated": "2018-05-19 03:42:47.980",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1189,32 +1189,43 @@
         "enabled": true
       },
       "settings": {
-        "params": {},
-        "forms": {
-          "table": {
-            "type": "TextBox",
-            "name": "table",
-            "defaultValue": "",
-            "hidden": false
-          }
-        }
+        "params": {
+          "table": ""
+        },
+        "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
-            "type": "TEXT",
-            "data": "\nmismatched input \u0027IS\u0027 expecting \u0027)\u0027(line 7, pos 10)\n\n\u003d\u003d SQL \u003d\u003d\nWITH\ntarget (\nSELECT\n    Age AS x,\n    CurrentJobTitleSelect AS grp\nFROM \nWHERE Age IS NOT NULL  -- NULL 제거\n----------^^^\n),\nstats (\nSELECT\n    MIN(x) AS x_min,\n    10 AS num_bins,\n    (MAX(x) - MIN(x)) / 10 AS bin_width  -- bin 너비 계산\nFROM target\n),\nbin_tmp (\nSELECT\n    x, grp,\n    FLOOR((x - x_min) / bin_width) AS bin  -- 각 값이 어느 bin에 속하는지 계산\nFROM\n    target\n    CROSS JOIN stats\n),\nbin (\nSELECT\n    x, grp, \n    CASE WHEN bin \u003d num_bins THEN num_bins - 1 ELSE bin END AS bin  -- 마지막 bin의 범위를 90 ~ 99이 아닌 90 ~ 100이 되도록\nFROM\n    bin_tmp\n    CROSS JOIN stats\n),\nbin_stats (  -- 각 bin의 여러 통계량 계산 (x축에 나타낼 값들)\nSELECT\n    bin,\n    AVG(x) AS bin_avg,\n    MIN(x) AS bin_min,\n    MAX(x) AS bin_max,\n    MIN(bin_width) * bin AS bin_start,\n    MIN(bin_width) * (bin + 1) AS bin_end\nFROM\n    bin\n    CROSS JOIN stats\nGROUP BY bin\n),\nbin_grp (\nSELECT\n    bin, grp, COUNT(*) AS bin_grp_cnt\nFROM bin\nGROUP BY bin, grp\n)\nSELECT bin, grp, bin_grp_cnt, bin_avg, bin_min, bin_max, bin_start, bin_end\nFROM\n    bin_grp\n    JOIN bin_stats USING (bin)\nORDER BY bin, grp\n\nset zeppelin.spark.sql.stacktrace \u003d true to see full stacktrace"
+            "type": "TABLE",
+            "data": "bin\tgrp\tbin_grp_cnt\tbin_avg\tbin_min\tbin_max\tbin_start\tbin_end\n0\tnull\t9\t1.7619047619047619\t0\t9\t0.0\t10.0\n0\tBusiness Analyst\t1\t1.7619047619047619\t0\t9\t0.0\t10.0\n0\tData Scientist\t1\t1.7619047619047619\t0\t9\t0.0\t10.0\n0\tEngineer\t1\t1.7619047619047619\t0\t9\t0.0\t10.0\n0\tOther\t1\t1.7619047619047619\t0\t9\t0.0\t10.0\n0\tPredictive Modeler\t1\t1.7619047619047619\t0\t9\t0.0\t10.0\n0\tProgrammer\t1\t1.7619047619047619\t0\t9\t0.0\t10.0\n0\tScientist/Researcher\t3\t1.7619047619047619\t0\t9\t0.0\t10.0\n0\tSoftware Developer/Software Engineer\t3\t1.7619047619047619\t0\t9\t0.0\t10.0\n1\tnull\t292\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tBusiness Analyst\t2\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tComputer Scientist\t3\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tData Analyst\t4\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tData Scientist\t7\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tEngineer\t6\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tMachine Learning Engineer\t5\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tOther\t16\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tProgrammer\t13\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tResearcher\t4\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tScientist/Researcher\t3\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tSoftware Developer/Software Engineer\t7\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tStatistician\t2\t17.97252747252747\t10\t19\t10.0\t20.0\n2\tnull\t2868\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tBusiness Analyst\t331\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tComputer Scientist\t121\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tDBA/Database Engineer\t57\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tData Analyst\t603\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tData Miner\t47\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tData Scientist\t945\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tEngineer\t208\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tMachine Learning Engineer\t330\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tOperations Research Practitioner\t16\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tOther\t349\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tPredictive Modeler\t61\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tProgrammer\t221\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tResearcher\t252\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tScientist/Researcher\t308\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tSoftware Developer/Software Engineer\t782\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tStatistician\t100\t24.84313725490196\t20\t29\t20.0\t30.0\n3\tnull\t833\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tBusiness Analyst\t280\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tComputer Scientist\t105\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tDBA/Database Engineer\t61\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tData Analyst\t407\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tData Miner\t48\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tData Scientist\t971\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tEngineer\t195\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tMachine Learning Engineer\t177\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tOperations Research Practitioner\t17\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tOther\t453\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tPredictive Modeler\t68\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tProgrammer\t132\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tResearcher\t208\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tScientist/Researcher\t398\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tSoftware Developer/Software Engineer\t580\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tStatistician\t96\t33.79876715052694\t30\t39\t30.0\t40.0\n4\tnull\t421\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tBusiness Analyst\t106\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tComputer Scientist\t64\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tDBA/Database Engineer\t41\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tData Analyst\t122\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tData Miner\t12\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tData Scientist\t307\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tEngineer\t87\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tMachine Learning Engineer\t67\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tOperations Research Practitioner\t10\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tOther\t244\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tPredictive Modeler\t30\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tProgrammer\t57\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tResearcher\t79\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tScientist/Researcher\t140\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tSoftware Developer/Software Engineer\t238\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tStatistician\t42\t43.74020319303338\t40\t49\t40.0\t50.0\n5\tnull\t213\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tBusiness Analyst\t44\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tComputer Scientist\t23\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tDBA/Database Engineer\t18\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tData Analyst\t47\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tData Miner\t5\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tData Scientist\t137\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tEngineer\t40\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tMachine Learning Engineer\t24\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tOperations Research Practitioner\t10\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tOther\t113\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tPredictive Modeler\t12\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tProgrammer\t20\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tResearcher\t44\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tScientist/Researcher\t76\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tSoftware Developer/Software Engineer\t83\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tStatistician\t28\t53.54002134471718\t50\t59\t50.0\t60.0\n6\tnull\t76\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tBusiness Analyst\t13\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tComputer Scientist\t11\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tDBA/Database Engineer\t5\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tData Analyst\t8\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tData Miner\t3\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tData Scientist\t29\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tEngineer\t7\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tMachine Learning Engineer\t6\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tOperations Research Practitioner\t2\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tOther\t29\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tPredictive Modeler\t4\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tProgrammer\t7\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tResearcher\t14\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tScientist/Researcher\t30\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tSoftware Developer/Software Engineer\t29\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tStatistician\t16\t63.44290657439446\t60\t69\t60.0\t70.0\n7\tnull\t22\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tBusiness Analyst\t3\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tDBA/Database Engineer\t1\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tData Analyst\t2\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tData Scientist\t4\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tEngineer\t2\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tMachine Learning Engineer\t1\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tOperations Research Practitioner\t1\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tOther\t1\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tPredictive Modeler\t1\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tProgrammer\t1\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tResearcher\t2\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tScientist/Researcher\t5\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tSoftware Developer/Software Engineer\t8\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tStatistician\t4\t72.51724137931035\t70\t79\t70.0\t80.0\n8\tnull\t1\t80.83333333333333\t80\t83\t80.0\t90.0\n8\tBusiness Analyst\t1\t80.83333333333333\t80\t83\t80.0\t90.0\n8\tComputer Scientist\t2\t80.83333333333333\t80\t83\t80.0\t90.0\n8\tOther\t1\t80.83333333333333\t80\t83\t80.0\t90.0\n8\tSoftware Developer/Software Engineer\t1\t80.83333333333333\t80\t83\t80.0\t90.0\n9\tnull\t8\t99.26666666666667\t94\t100\t90.0\t100.0\n9\tBusiness Analyst\t1\t99.26666666666667\t94\t100\t90.0\t100.0\n9\tEngineer\t1\t99.26666666666667\t94\t100\t90.0\t100.0\n9\tMachine Learning Engineer\t1\t99.26666666666667\t94\t100\t90.0\t100.0\n9\tOther\t1\t99.26666666666667\t94\t100\t90.0\t100.0\n9\tProgrammer\t1\t99.26666666666667\t94\t100\t90.0\t100.0\n9\tScientist/Researcher\t1\t99.26666666666667\t94\t100\t90.0\t100.0\n9\tStatistician\t1\t99.26666666666667\t94\t100\t90.0\t100.0\n"
           }
         ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://192.168.0.2:4040/jobs/job?id\u003d6",
+            "http://192.168.0.2:4040/jobs/job?id\u003d7",
+            "http://192.168.0.2:4040/jobs/job?id\u003d8",
+            "http://192.168.0.2:4040/jobs/job?id\u003d9",
+            "http://192.168.0.2:4040/jobs/job?id\u003d10"
+          ],
+          "interpreterSettingId": "spark"
+        }
       },
       "apps": [],
       "jobName": "paragraph_1526658878043_-1409684427",
       "id": "20180519-003745_400359499",
       "dateCreated": "2018-05-19 00:54:38.043",
-      "dateStarted": "2018-05-19 03:23:48.747",
-      "dateFinished": "2018-05-19 03:23:48.759",
-      "status": "ERROR",
+      "dateStarted": "2018-05-19 03:42:45.168",
+      "dateFinished": "2018-05-19 03:42:47.854",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
