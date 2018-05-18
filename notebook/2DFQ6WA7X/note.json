@@ -1,0 +1,841 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n# Preprocessing Kaggle Survey Dataset\n\u003e **Kaggle ML and Data Science Survey**, 2017\nA big picture view of the state of data science and machine learning.\nhttps://www.kaggle.com/kaggle/kaggle-survey-2017",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-17 15:53:27.711",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003ePreprocessing Kaggle Survey Dataset\u003c/h1\u003e\n\u003cblockquote\u003e\n  \u003cp\u003e\u003cstrong\u003eKaggle ML and Data Science Survey\u003c/strong\u003e, 2017\u003cbr/\u003eA big picture view of the state of data science and machine learning.\u003cbr/\u003e\u003ca href\u003d\"https://www.kaggle.com/kaggle/kaggle-survey-2017\"\u003ehttps://www.kaggle.com/kaggle/kaggle-survey-2017\u003c/a\u003e\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526539686085_-923507984",
+      "id": "20180517-154806_722390407",
+      "dateCreated": "2018-05-17 15:48:06.085",
+      "dateStarted": "2018-05-17 15:53:27.712",
+      "dateFinished": "2018-05-17 15:53:27.715",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Spark interpreter 작동 확인",
+      "text": "spark.version",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-17 15:54:01.156",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "res0: String \u003d 2.3.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526371027818_1891445023",
+      "id": "20180515-165707_1378309691",
+      "dateCreated": "2018-05-15 16:57:07.818",
+      "dateStarted": "2018-05-15 18:16:18.092",
+      "dateFinished": "2018-05-15 18:16:28.548",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## 전처리: `multipleChoiceResponses.csv`",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-17 15:48:03.517",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e전처리: \u003ccode\u003emultipleChoiceResponses.csv\u003c/code\u003e\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526539678059_-617435490",
+      "id": "20180517-154758_2076195824",
+      "dateCreated": "2018-05-17 15:47:58.059",
+      "dateStarted": "2018-05-17 15:48:03.517",
+      "dateFinished": "2018-05-17 15:48:03.521",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nCREATE TEMPORARY TABLE survey_tmp\nUSING CSV\nOPTIONS (\n    path \u003d \u0027/Users/jun/Downloads/kaggle-survey-2017/multipleChoiceResponses.csv\u0027,\n    header \u003d true,\n    multiLine \u003d true,\n    nullValue \u003d \u0027NA\u0027\n)",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-15 18:15:38.422",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {}
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": ""
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526373915111_-142981176",
+      "id": "20180515-174515_2064859338",
+      "dateCreated": "2018-05-15 17:45:15.111",
+      "dateStarted": "2018-05-15 18:15:38.429",
+      "dateFinished": "2018-05-15 18:15:39.553",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nCREATE TABLE survey\nUSING PARQUET\nLOCATION \u0027outputs/survey.parquet\u0027\nAS\nSELECT\n    GenderSelect,\n    Country,\n    CAST(Age AS INT) AS Age,\n    EmploymentStatus,\n    StudentStatus,\n    LearningDataScience,\n    CodeWriter,\n    CareerSwitcher,\n    CurrentJobTitleSelect,\n    TitleFit,\n    CurrentEmployerType,\n    MLToolNextYearSelect,\n    MLMethodNextYearSelect,\n    LanguageRecommendationSelect,\n    PublicDatasetsSelect,\n    LearningPlatformSelect,\n    LearningPlatformUsefulnessArxiv,\n    LearningPlatformUsefulnessBlogs,\n    LearningPlatformUsefulnessCollege,\n    LearningPlatformUsefulnessCompany,\n    LearningPlatformUsefulnessConferences,\n    LearningPlatformUsefulnessFriends,\n    LearningPlatformUsefulnessKaggle,\n    LearningPlatformUsefulnessNewsletters,\n    LearningPlatformUsefulnessCommunities,\n    LearningPlatformUsefulnessDocumentation,\n    LearningPlatformUsefulnessCourses,\n    LearningPlatformUsefulnessProjects,\n    LearningPlatformUsefulnessPodcasts,\n    LearningPlatformUsefulnessSO,\n    LearningPlatformUsefulnessTextbook,\n    LearningPlatformUsefulnessTradeBook,\n    LearningPlatformUsefulnessTutoring,\n    LearningPlatformUsefulnessYouTube,\n    BlogsPodcastsNewslettersSelect,\n    LearningDataScienceTime,\n    JobSkillImportanceBigData,\n    JobSkillImportanceDegree,\n    JobSkillImportanceStats,\n    JobSkillImportanceEnterpriseTools,\n    JobSkillImportancePython,\n    JobSkillImportanceR,\n    JobSkillImportanceSQL,\n    JobSkillImportanceKaggleRanking,\n    JobSkillImportanceMOOC,\n    JobSkillImportanceVisualizations,\n    JobSkillImportanceOtherSelect1,\n    JobSkillImportanceOtherSelect2,\n    JobSkillImportanceOtherSelect3,\n    CoursePlatformSelect,\n    HardwarePersonalProjectsSelect,\n    TimeSpentStudying,\n    ProveKnowledgeSelect,\n    DataScienceIdentitySelect,\n    FormalEducation,\n    MajorSelect,\n    Tenure,\n    PastJobTitlesSelect,\n    FirstTrainingSelect,\n    CAST(LearningCategorySelftTaught AS INT) AS LearningCategorySelfTaught, -- Typo: LearningCategorySelf\u0027t\u0027Taught\n    CAST(LearningCategoryOnlineCourses AS INT) AS LearningCategoryOnlineCourses,\n    CAST(LearningCategoryWork AS INT) AS LearningCategoryWork,\n    CAST(LearningCategoryUniversity AS INT) AS LearningCategoryUniversity,\n    CAST(LearningCategoryKaggle AS INT) AS LearningCategoryKaggle,\n    CAST(LearningCategoryOther AS INT) AS LearningCategoryOther,\n    MLSkillsSelect,\n    MLTechniquesSelect,\n    ParentsEducation,\n    EmployerIndustry,\n    EmployerSize,\n    EmployerSizeChange,\n    EmployerMLTime,\n    EmployerSearchMethod,\n    UniversityImportance,\n    JobFunctionSelect,\n    WorkHardwareSelect,\n    WorkDataTypeSelect,\n    WorkProductionFrequency,\n    WorkDatasetSize,\n    WorkAlgorithmsSelect,\n    WorkToolsSelect,\n    WorkToolsFrequencyAmazonML,\n    WorkToolsFrequencyAWS,\n    WorkToolsFrequencyAngoss,\n    WorkToolsFrequencyC,\n    WorkToolsFrequencyCloudera,\n    WorkToolsFrequencyDataRobot,\n    WorkToolsFrequencyFlume,\n    WorkToolsFrequencyGCP,\n    WorkToolsFrequencyHadoop,\n    WorkToolsFrequencyIBMCognos,\n    WorkToolsFrequencyIBMSPSSModeler,\n    WorkToolsFrequencyIBMSPSSStatistics,\n    WorkToolsFrequencyIBMWatson,\n    WorkToolsFrequencyImpala,\n    WorkToolsFrequencyJava,\n    WorkToolsFrequencyJulia,\n    WorkToolsFrequencyJupyter,\n    WorkToolsFrequencyKNIMECommercial,\n    WorkToolsFrequencyKNIMEFree,\n    WorkToolsFrequencyMathematica,\n    WorkToolsFrequencyMATLAB,\n    WorkToolsFrequencyAzure,\n    WorkToolsFrequencyExcel,\n    WorkToolsFrequencyMicrosoftRServer,\n    WorkToolsFrequencyMicrosoftSQL,\n    WorkToolsFrequencyMinitab,\n    WorkToolsFrequencyNoSQL,\n    WorkToolsFrequencyOracle,\n    WorkToolsFrequencyOrange,\n    WorkToolsFrequencyPerl,\n    WorkToolsFrequencyPython,\n    WorkToolsFrequencyQlik,\n    WorkToolsFrequencyR,\n    WorkToolsFrequencyRapidMinerCommercial,\n    WorkToolsFrequencyRapidMinerFree,\n    WorkToolsFrequencySalfrod,\n    WorkToolsFrequencySAPBusinessObjects,\n    WorkToolsFrequencySASBase,\n    WorkToolsFrequencySASEnterprise,\n    WorkToolsFrequencySASJMP,\n    WorkToolsFrequencySpark,\n    WorkToolsFrequencySQL,\n    WorkToolsFrequencyStan,\n    WorkToolsFrequencyStatistica,\n    WorkToolsFrequencyTableau,\n    WorkToolsFrequencyTensorFlow,\n    WorkToolsFrequencyTIBCO,\n    WorkToolsFrequencyUnix,\n    WorkToolsFrequencySelect1,\n    WorkToolsFrequencySelect2,\n    WorkFrequencySelect3,\n    WorkMethodsSelect,\n    `WorkMethodsFrequencyA/B` AS WorkMethodsFrequencyAB,\n    WorkMethodsFrequencyAssociationRules,\n    WorkMethodsFrequencyBayesian,\n    WorkMethodsFrequencyCNNs,\n    WorkMethodsFrequencyCollaborativeFiltering,\n    `WorkMethodsFrequencyCross-Validation` AS WorkMethodsFrequencyCrossValidation,\n    WorkMethodsFrequencyDataVisualization,\n    WorkMethodsFrequencyDecisionTrees,\n    WorkMethodsFrequencyEnsembleMethods,\n    WorkMethodsFrequencyEvolutionaryApproaches,\n    WorkMethodsFrequencyGANs,\n    WorkMethodsFrequencyGBM,\n    WorkMethodsFrequencyHMMs,\n    WorkMethodsFrequencyKNN,\n    WorkMethodsFrequencyLiftAnalysis,\n    WorkMethodsFrequencyLogisticRegression,\n    WorkMethodsFrequencyMLN,\n    WorkMethodsFrequencyNaiveBayes,\n    WorkMethodsFrequencyNLP,\n    WorkMethodsFrequencyNeuralNetworks,\n    WorkMethodsFrequencyPCA,\n    WorkMethodsFrequencyPrescriptiveModeling,\n    WorkMethodsFrequencyRandomForests,\n    WorkMethodsFrequencyRecommenderSystems,\n    WorkMethodsFrequencyRNNs,\n    WorkMethodsFrequencySegmentation,\n    WorkMethodsFrequencySimulation,\n    WorkMethodsFrequencySVMs,\n    WorkMethodsFrequencyTextAnalysis,\n    WorkMethodsFrequencyTimeSeriesAnalysis,\n    WorkMethodsFrequencySelect1,\n    WorkMethodsFrequencySelect2,\n    WorkMethodsFrequencySelect3,\n    CAST(TimeGatheringData AS INT) AS TimeGatheringData,\n    CAST(TimeModelBuilding AS INT) AS TimeModelBuilding,\n    CAST(TimeProduction AS INT) AS TimeProduction,\n    CAST(TimeVisualizing AS INT) AS TimeVisualizing,\n    CAST(TimeFindingInsights AS INT) AS TimeFindingInsights,\n    CAST(TimeOtherSelect AS INT) AS TimeOtherSelect,\n    AlgorithmUnderstandingLevel,\n    WorkChallengesSelect,\n    WorkChallengeFrequencyPolitics,\n    WorkChallengeFrequencyUnusedResults,\n    WorkChallengeFrequencyUnusefulInstrumenting,\n    WorkChallengeFrequencyDeployment,\n    WorkChallengeFrequencyDirtyData,\n    WorkChallengeFrequencyExplaining,\n    WorkChallengeFrequencyPass,\n    WorkChallengeFrequencyIntegration,\n    WorkChallengeFrequencyTalent,\n    WorkChallengeFrequencyDataFunds,\n    WorkChallengeFrequencyDomainExpertise,\n    WorkChallengeFrequencyML,\n    WorkChallengeFrequencyTools,\n    WorkChallengeFrequencyExpectations,\n    WorkChallengeFrequencyITCoordination,\n    WorkChallengeFrequencyHiringFunds,\n    WorkChallengeFrequencyPrivacy,\n    WorkChallengeFrequencyScaling,\n    WorkChallengeFrequencyEnvironments,\n    WorkChallengeFrequencyClarity,\n    WorkChallengeFrequencyDataAccess,\n    WorkChallengeFrequencyOtherSelect,\n    WorkDataVisualizations,\n    WorkInternalVsExternalTools,\n    WorkMLTeamSeatSelect,\n    WorkDatasets,\n    WorkDatasetsChallenge,\n    WorkDataStorage,\n    WorkDataSharing,\n    WorkDataSourcing,\n    WorkCodeSharing,\n    RemoteWork,\n    CompensationAmount,\n    CompensationCurrency,\n    SalaryChange,\n    JobSatisfaction,\n    JobSearchResource,\n    JobHuntTime,\n    JobFactorLearning,\n    JobFactorSalary,\n    JobFactorOffice,\n    JobFactorLanguages,\n    JobFactorCommute,\n    JobFactorManagement,\n    JobFactorExperienceLevel,\n    JobFactorDepartment,\n    JobFactorTitle,\n    JobFactorCompanyFunding,\n    JobFactorImpact,\n    JobFactorRemote,\n    JobFactorIndustry,\n    JobFactorLeaderReputation,\n    JobFactorDiversity\n    -- JobFactorPublishingOpportunity -- All values of the column are null.\nFROM survey_tmp",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-15 18:15:43.510",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 84.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {},
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": ""
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526374015071_-60410441",
+      "id": "20180515-174655_1482460943",
+      "dateCreated": "2018-05-15 17:46:55.071",
+      "dateStarted": "2018-05-15 18:15:43.518",
+      "dateFinished": "2018-05-15 18:15:47.086",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nSELECT * FROM survey LIMIT 5",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-15 18:15:55.630",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "GenderSelect": "string",
+                      "Country": "string",
+                      "Age": "string",
+                      "EmploymentStatus": "string",
+                      "StudentStatus": "string",
+                      "LearningDataScience": "string",
+                      "CodeWriter": "string",
+                      "CareerSwitcher": "string",
+                      "CurrentJobTitleSelect": "string",
+                      "TitleFit": "string",
+                      "CurrentEmployerType": "string",
+                      "MLToolNextYearSelect": "string",
+                      "MLMethodNextYearSelect": "string",
+                      "LanguageRecommendationSelect": "string",
+                      "PublicDatasetsSelect": "string",
+                      "LearningPlatformSelect": "string",
+                      "LearningPlatformUsefulnessArxiv": "string",
+                      "LearningPlatformUsefulnessBlogs": "string",
+                      "LearningPlatformUsefulnessCollege": "string",
+                      "LearningPlatformUsefulnessCompany": "string",
+                      "LearningPlatformUsefulnessConferences": "string",
+                      "LearningPlatformUsefulnessFriends": "string",
+                      "LearningPlatformUsefulnessKaggle": "string",
+                      "LearningPlatformUsefulnessNewsletters": "string",
+                      "LearningPlatformUsefulnessCommunities": "string",
+                      "LearningPlatformUsefulnessDocumentation": "string",
+                      "LearningPlatformUsefulnessCourses": "string",
+                      "LearningPlatformUsefulnessProjects": "string",
+                      "LearningPlatformUsefulnessPodcasts": "string",
+                      "LearningPlatformUsefulnessSO": "string",
+                      "LearningPlatformUsefulnessTextbook": "string",
+                      "LearningPlatformUsefulnessTradeBook": "string",
+                      "LearningPlatformUsefulnessTutoring": "string",
+                      "LearningPlatformUsefulnessYouTube": "string",
+                      "BlogsPodcastsNewslettersSelect": "string",
+                      "LearningDataScienceTime": "string",
+                      "JobSkillImportanceBigData": "string",
+                      "JobSkillImportanceDegree": "string",
+                      "JobSkillImportanceStats": "string",
+                      "JobSkillImportanceEnterpriseTools": "string",
+                      "JobSkillImportancePython": "string",
+                      "JobSkillImportanceR": "string",
+                      "JobSkillImportanceSQL": "string",
+                      "JobSkillImportanceKaggleRanking": "string",
+                      "JobSkillImportanceMOOC": "string",
+                      "JobSkillImportanceVisualizations": "string",
+                      "JobSkillImportanceOtherSelect1": "string",
+                      "JobSkillImportanceOtherSelect2": "string",
+                      "JobSkillImportanceOtherSelect3": "string",
+                      "CoursePlatformSelect": "string",
+                      "HardwarePersonalProjectsSelect": "string",
+                      "TimeSpentStudying": "string",
+                      "ProveKnowledgeSelect": "string",
+                      "DataScienceIdentitySelect": "string",
+                      "FormalEducation": "string",
+                      "MajorSelect": "string",
+                      "Tenure": "string",
+                      "PastJobTitlesSelect": "string",
+                      "FirstTrainingSelect": "string",
+                      "LearningCategorySelfTaught": "string",
+                      "LearningCategoryOnlineCourses": "string",
+                      "LearningCategoryWork": "string",
+                      "LearningCategoryUniversity": "string",
+                      "LearningCategoryKaggle": "string",
+                      "LearningCategoryOther": "string",
+                      "MLSkillsSelect": "string",
+                      "MLTechniquesSelect": "string",
+                      "ParentsEducation": "string",
+                      "EmployerIndustry": "string",
+                      "EmployerSize": "string",
+                      "EmployerSizeChange": "string",
+                      "EmployerMLTime": "string",
+                      "EmployerSearchMethod": "string",
+                      "UniversityImportance": "string",
+                      "JobFunctionSelect": "string",
+                      "WorkHardwareSelect": "string",
+                      "WorkDataTypeSelect": "string",
+                      "WorkProductionFrequency": "string",
+                      "WorkDatasetSize": "string",
+                      "WorkAlgorithmsSelect": "string",
+                      "WorkToolsSelect": "string",
+                      "WorkToolsFrequencyAmazonML": "string",
+                      "WorkToolsFrequencyAWS": "string",
+                      "WorkToolsFrequencyAngoss": "string",
+                      "WorkToolsFrequencyC": "string",
+                      "WorkToolsFrequencyCloudera": "string",
+                      "WorkToolsFrequencyDataRobot": "string",
+                      "WorkToolsFrequencyFlume": "string",
+                      "WorkToolsFrequencyGCP": "string",
+                      "WorkToolsFrequencyHadoop": "string",
+                      "WorkToolsFrequencyIBMCognos": "string",
+                      "WorkToolsFrequencyIBMSPSSModeler": "string",
+                      "WorkToolsFrequencyIBMSPSSStatistics": "string",
+                      "WorkToolsFrequencyIBMWatson": "string",
+                      "WorkToolsFrequencyImpala": "string",
+                      "WorkToolsFrequencyJava": "string",
+                      "WorkToolsFrequencyJulia": "string",
+                      "WorkToolsFrequencyJupyter": "string",
+                      "WorkToolsFrequencyKNIMECommercial": "string",
+                      "WorkToolsFrequencyKNIMEFree": "string",
+                      "WorkToolsFrequencyMathematica": "string",
+                      "WorkToolsFrequencyMATLAB": "string",
+                      "WorkToolsFrequencyAzure": "string",
+                      "WorkToolsFrequencyExcel": "string",
+                      "WorkToolsFrequencyMicrosoftRServer": "string",
+                      "WorkToolsFrequencyMicrosoftSQL": "string",
+                      "WorkToolsFrequencyMinitab": "string",
+                      "WorkToolsFrequencyNoSQL": "string",
+                      "WorkToolsFrequencyOracle": "string",
+                      "WorkToolsFrequencyOrange": "string",
+                      "WorkToolsFrequencyPerl": "string",
+                      "WorkToolsFrequencyPython": "string",
+                      "WorkToolsFrequencyQlik": "string",
+                      "WorkToolsFrequencyR": "string",
+                      "WorkToolsFrequencyRapidMinerCommercial": "string",
+                      "WorkToolsFrequencyRapidMinerFree": "string",
+                      "WorkToolsFrequencySalfrod": "string",
+                      "WorkToolsFrequencySAPBusinessObjects": "string",
+                      "WorkToolsFrequencySASBase": "string",
+                      "WorkToolsFrequencySASEnterprise": "string",
+                      "WorkToolsFrequencySASJMP": "string",
+                      "WorkToolsFrequencySpark": "string",
+                      "WorkToolsFrequencySQL": "string",
+                      "WorkToolsFrequencyStan": "string",
+                      "WorkToolsFrequencyStatistica": "string",
+                      "WorkToolsFrequencyTableau": "string",
+                      "WorkToolsFrequencyTensorFlow": "string",
+                      "WorkToolsFrequencyTIBCO": "string",
+                      "WorkToolsFrequencyUnix": "string",
+                      "WorkToolsFrequencySelect1": "string",
+                      "WorkToolsFrequencySelect2": "string",
+                      "WorkFrequencySelect3": "string",
+                      "WorkMethodsSelect": "string",
+                      "WorkMethodsFrequencyAB": "string",
+                      "WorkMethodsFrequencyAssociationRules": "string",
+                      "WorkMethodsFrequencyBayesian": "string",
+                      "WorkMethodsFrequencyCNNs": "string",
+                      "WorkMethodsFrequencyCollaborativeFiltering": "string",
+                      "WorkMethodsFrequencyCrossValidation": "string",
+                      "WorkMethodsFrequencyDataVisualization": "string",
+                      "WorkMethodsFrequencyDecisionTrees": "string",
+                      "WorkMethodsFrequencyEnsembleMethods": "string",
+                      "WorkMethodsFrequencyEvolutionaryApproaches": "string",
+                      "WorkMethodsFrequencyGANs": "string",
+                      "WorkMethodsFrequencyGBM": "string",
+                      "WorkMethodsFrequencyHMMs": "string",
+                      "WorkMethodsFrequencyKNN": "string",
+                      "WorkMethodsFrequencyLiftAnalysis": "string",
+                      "WorkMethodsFrequencyLogisticRegression": "string",
+                      "WorkMethodsFrequencyMLN": "string",
+                      "WorkMethodsFrequencyNaiveBayes": "string",
+                      "WorkMethodsFrequencyNLP": "string",
+                      "WorkMethodsFrequencyNeuralNetworks": "string",
+                      "WorkMethodsFrequencyPCA": "string",
+                      "WorkMethodsFrequencyPrescriptiveModeling": "string",
+                      "WorkMethodsFrequencyRandomForests": "string",
+                      "WorkMethodsFrequencyRecommenderSystems": "string",
+                      "WorkMethodsFrequencyRNNs": "string",
+                      "WorkMethodsFrequencySegmentation": "string",
+                      "WorkMethodsFrequencySimulation": "string",
+                      "WorkMethodsFrequencySVMs": "string",
+                      "WorkMethodsFrequencyTextAnalysis": "string",
+                      "WorkMethodsFrequencyTimeSeriesAnalysis": "string",
+                      "WorkMethodsFrequencySelect1": "string",
+                      "WorkMethodsFrequencySelect2": "string",
+                      "WorkMethodsFrequencySelect3": "string",
+                      "TimeGatheringData": "string",
+                      "TimeModelBuilding": "string",
+                      "TimeProduction": "string",
+                      "TimeVisualizing": "string",
+                      "TimeFindingInsights": "string",
+                      "TimeOtherSelect": "string",
+                      "AlgorithmUnderstandingLevel": "string",
+                      "WorkChallengesSelect": "string",
+                      "WorkChallengeFrequencyPolitics": "string",
+                      "WorkChallengeFrequencyUnusedResults": "string",
+                      "WorkChallengeFrequencyUnusefulInstrumenting": "string",
+                      "WorkChallengeFrequencyDeployment": "string",
+                      "WorkChallengeFrequencyDirtyData": "string",
+                      "WorkChallengeFrequencyExplaining": "string",
+                      "WorkChallengeFrequencyPass": "string",
+                      "WorkChallengeFrequencyIntegration": "string",
+                      "WorkChallengeFrequencyTalent": "string",
+                      "WorkChallengeFrequencyDataFunds": "string",
+                      "WorkChallengeFrequencyDomainExpertise": "string",
+                      "WorkChallengeFrequencyML": "string",
+                      "WorkChallengeFrequencyTools": "string",
+                      "WorkChallengeFrequencyExpectations": "string",
+                      "WorkChallengeFrequencyITCoordination": "string",
+                      "WorkChallengeFrequencyHiringFunds": "string",
+                      "WorkChallengeFrequencyPrivacy": "string",
+                      "WorkChallengeFrequencyScaling": "string",
+                      "WorkChallengeFrequencyEnvironments": "string",
+                      "WorkChallengeFrequencyClarity": "string",
+                      "WorkChallengeFrequencyDataAccess": "string",
+                      "WorkChallengeFrequencyOtherSelect": "string",
+                      "WorkDataVisualizations": "string",
+                      "WorkInternalVsExternalTools": "string",
+                      "WorkMLTeamSeatSelect": "string",
+                      "WorkDatasets": "string",
+                      "WorkDatasetsChallenge": "string",
+                      "WorkDataStorage": "string",
+                      "WorkDataSharing": "string",
+                      "WorkDataSourcing": "string",
+                      "WorkCodeSharing": "string",
+                      "RemoteWork": "string",
+                      "CompensationAmount": "string",
+                      "CompensationCurrency": "string",
+                      "SalaryChange": "string",
+                      "JobSatisfaction": "string",
+                      "JobSearchResource": "string",
+                      "JobHuntTime": "string",
+                      "JobFactorLearning": "string",
+                      "JobFactorSalary": "string",
+                      "JobFactorOffice": "string",
+                      "JobFactorLanguages": "string",
+                      "JobFactorCommute": "string",
+                      "JobFactorManagement": "string",
+                      "JobFactorExperienceLevel": "string",
+                      "JobFactorDepartment": "string",
+                      "JobFactorTitle": "string",
+                      "JobFactorCompanyFunding": "string",
+                      "JobFactorImpact": "string",
+                      "JobFactorRemote": "string",
+                      "JobFactorIndustry": "string",
+                      "JobFactorLeaderReputation": "string",
+                      "JobFactorDiversity": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "GenderSelect\tCountry\tAge\tEmploymentStatus\tStudentStatus\tLearningDataScience\tCodeWriter\tCareerSwitcher\tCurrentJobTitleSelect\tTitleFit\tCurrentEmployerType\tMLToolNextYearSelect\tMLMethodNextYearSelect\tLanguageRecommendationSelect\tPublicDatasetsSelect\tLearningPlatformSelect\tLearningPlatformUsefulnessArxiv\tLearningPlatformUsefulnessBlogs\tLearningPlatformUsefulnessCollege\tLearningPlatformUsefulnessCompany\tLearningPlatformUsefulnessConferences\tLearningPlatformUsefulnessFriends\tLearningPlatformUsefulnessKaggle\tLearningPlatformUsefulnessNewsletters\tLearningPlatformUsefulnessCommunities\tLearningPlatformUsefulnessDocumentation\tLearningPlatformUsefulnessCourses\tLearningPlatformUsefulnessProjects\tLearningPlatformUsefulnessPodcasts\tLearningPlatformUsefulnessSO\tLearningPlatformUsefulnessTextbook\tLearningPlatformUsefulnessTradeBook\tLearningPlatformUsefulnessTutoring\tLearningPlatformUsefulnessYouTube\tBlogsPodcastsNewslettersSelect\tLearningDataScienceTime\tJobSkillImportanceBigData\tJobSkillImportanceDegree\tJobSkillImportanceStats\tJobSkillImportanceEnterpriseTools\tJobSkillImportancePython\tJobSkillImportanceR\tJobSkillImportanceSQL\tJobSkillImportanceKaggleRanking\tJobSkillImportanceMOOC\tJobSkillImportanceVisualizations\tJobSkillImportanceOtherSelect1\tJobSkillImportanceOtherSelect2\tJobSkillImportanceOtherSelect3\tCoursePlatformSelect\tHardwarePersonalProjectsSelect\tTimeSpentStudying\tProveKnowledgeSelect\tDataScienceIdentitySelect\tFormalEducation\tMajorSelect\tTenure\tPastJobTitlesSelect\tFirstTrainingSelect\tLearningCategorySelfTaught\tLearningCategoryOnlineCourses\tLearningCategoryWork\tLearningCategoryUniversity\tLearningCategoryKaggle\tLearningCategoryOther\tMLSkillsSelect\tMLTechniquesSelect\tParentsEducation\tEmployerIndustry\tEmployerSize\tEmployerSizeChange\tEmployerMLTime\tEmployerSearchMethod\tUniversityImportance\tJobFunctionSelect\tWorkHardwareSelect\tWorkDataTypeSelect\tWorkProductionFrequency\tWorkDatasetSize\tWorkAlgorithmsSelect\tWorkToolsSelect\tWorkToolsFrequencyAmazonML\tWorkToolsFrequencyAWS\tWorkToolsFrequencyAngoss\tWorkToolsFrequencyC\tWorkToolsFrequencyCloudera\tWorkToolsFrequencyDataRobot\tWorkToolsFrequencyFlume\tWorkToolsFrequencyGCP\tWorkToolsFrequencyHadoop\tWorkToolsFrequencyIBMCognos\tWorkToolsFrequencyIBMSPSSModeler\tWorkToolsFrequencyIBMSPSSStatistics\tWorkToolsFrequencyIBMWatson\tWorkToolsFrequencyImpala\tWorkToolsFrequencyJava\tWorkToolsFrequencyJulia\tWorkToolsFrequencyJupyter\tWorkToolsFrequencyKNIMECommercial\tWorkToolsFrequencyKNIMEFree\tWorkToolsFrequencyMathematica\tWorkToolsFrequencyMATLAB\tWorkToolsFrequencyAzure\tWorkToolsFrequencyExcel\tWorkToolsFrequencyMicrosoftRServer\tWorkToolsFrequencyMicrosoftSQL\tWorkToolsFrequencyMinitab\tWorkToolsFrequencyNoSQL\tWorkToolsFrequencyOracle\tWorkToolsFrequencyOrange\tWorkToolsFrequencyPerl\tWorkToolsFrequencyPython\tWorkToolsFrequencyQlik\tWorkToolsFrequencyR\tWorkToolsFrequencyRapidMinerCommercial\tWorkToolsFrequencyRapidMinerFree\tWorkToolsFrequencySalfrod\tWorkToolsFrequencySAPBusinessObjects\tWorkToolsFrequencySASBase\tWorkToolsFrequencySASEnterprise\tWorkToolsFrequencySASJMP\tWorkToolsFrequencySpark\tWorkToolsFrequencySQL\tWorkToolsFrequencyStan\tWorkToolsFrequencyStatistica\tWorkToolsFrequencyTableau\tWorkToolsFrequencyTensorFlow\tWorkToolsFrequencyTIBCO\tWorkToolsFrequencyUnix\tWorkToolsFrequencySelect1\tWorkToolsFrequencySelect2\tWorkFrequencySelect3\tWorkMethodsSelect\tWorkMethodsFrequencyAB\tWorkMethodsFrequencyAssociationRules\tWorkMethodsFrequencyBayesian\tWorkMethodsFrequencyCNNs\tWorkMethodsFrequencyCollaborativeFiltering\tWorkMethodsFrequencyCrossValidation\tWorkMethodsFrequencyDataVisualization\tWorkMethodsFrequencyDecisionTrees\tWorkMethodsFrequencyEnsembleMethods\tWorkMethodsFrequencyEvolutionaryApproaches\tWorkMethodsFrequencyGANs\tWorkMethodsFrequencyGBM\tWorkMethodsFrequencyHMMs\tWorkMethodsFrequencyKNN\tWorkMethodsFrequencyLiftAnalysis\tWorkMethodsFrequencyLogisticRegression\tWorkMethodsFrequencyMLN\tWorkMethodsFrequencyNaiveBayes\tWorkMethodsFrequencyNLP\tWorkMethodsFrequencyNeuralNetworks\tWorkMethodsFrequencyPCA\tWorkMethodsFrequencyPrescriptiveModeling\tWorkMethodsFrequencyRandomForests\tWorkMethodsFrequencyRecommenderSystems\tWorkMethodsFrequencyRNNs\tWorkMethodsFrequencySegmentation\tWorkMethodsFrequencySimulation\tWorkMethodsFrequencySVMs\tWorkMethodsFrequencyTextAnalysis\tWorkMethodsFrequencyTimeSeriesAnalysis\tWorkMethodsFrequencySelect1\tWorkMethodsFrequencySelect2\tWorkMethodsFrequencySelect3\tTimeGatheringData\tTimeModelBuilding\tTimeProduction\tTimeVisualizing\tTimeFindingInsights\tTimeOtherSelect\tAlgorithmUnderstandingLevel\tWorkChallengesSelect\tWorkChallengeFrequencyPolitics\tWorkChallengeFrequencyUnusedResults\tWorkChallengeFrequencyUnusefulInstrumenting\tWorkChallengeFrequencyDeployment\tWorkChallengeFrequencyDirtyData\tWorkChallengeFrequencyExplaining\tWorkChallengeFrequencyPass\tWorkChallengeFrequencyIntegration\tWorkChallengeFrequencyTalent\tWorkChallengeFrequencyDataFunds\tWorkChallengeFrequencyDomainExpertise\tWorkChallengeFrequencyML\tWorkChallengeFrequencyTools\tWorkChallengeFrequencyExpectations\tWorkChallengeFrequencyITCoordination\tWorkChallengeFrequencyHiringFunds\tWorkChallengeFrequencyPrivacy\tWorkChallengeFrequencyScaling\tWorkChallengeFrequencyEnvironments\tWorkChallengeFrequencyClarity\tWorkChallengeFrequencyDataAccess\tWorkChallengeFrequencyOtherSelect\tWorkDataVisualizations\tWorkInternalVsExternalTools\tWorkMLTeamSeatSelect\tWorkDatasets\tWorkDatasetsChallenge\tWorkDataStorage\tWorkDataSharing\tWorkDataSourcing\tWorkCodeSharing\tRemoteWork\tCompensationAmount\tCompensationCurrency\tSalaryChange\tJobSatisfaction\tJobSearchResource\tJobHuntTime\tJobFactorLearning\tJobFactorSalary\tJobFactorOffice\tJobFactorLanguages\tJobFactorCommute\tJobFactorManagement\tJobFactorExperienceLevel\tJobFactorDepartment\tJobFactorTitle\tJobFactorCompanyFunding\tJobFactorImpact\tJobFactorRemote\tJobFactorIndustry\tJobFactorLeaderReputation\tJobFactorDiversity\nNon-binary, genderqueer, or gender non-conforming\tnull\tnull\tEmployed full-time\tnull\tnull\tYes\tnull\tDBA/Database Engineer\tFine\tEmployed by a company that doesn\u0027t perform advanced analytics,Employed by non-profit or NGO\tSAS Base\tRandom Forests\tF#\tDataset aggregator/platform (i.e. Socrata/Kaggle Datasets/data.world/etc.),University/Non-profit research group websites,Other\tCollege/University,Conferences,Podcasts,Trade book\tnull\tnull\tnull\tnull\tVery useful\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tVery useful\tnull\tnull\tSomewhat useful\tnull\tnull\tBecoming a Data Scientist Podcast,Data Machina Newsletter,O\u0027Reilly Data Newsletter,Partially Derivative Podcast,R Bloggers Blog Aggregator\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tYes\tBachelor\u0027s degree\tManagement information systems\tMore than 10 years\tPredictive Modeler,Programmer,Researcher\tUniversity courses\t0\t0\t100\t0\t0\t0\tComputer Vision,Natural Language Processing,Supervised Machine Learning (Tabular Data),Time Series\tEvolutionary Approaches,Neural Networks - GANs,Neural Networks - RNNs\tA doctoral degree\tInternet-based\t100 to 499 employees\tIncreased slightly\t3-5 years\tI visited the company\u0027s Web site and found a job listing there\tNot very important\tBuild prototypes to explore applying machine learning to new areas\tGaming Laptop (Laptop + CUDA capable GPU),Workstation + Cloud service\tText data,Relational data\tRarely\t10GB\tNeural Networks,Random Forests,RNNs\tAmazon Web services,Oracle Data Mining/ Oracle R Enterprise,Perl\tnull\tRarely\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tSometimes\tnull\tMost of the time\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tAssociation Rules,Collaborative Filtering,Neural Networks,PCA and Dimensionality Reduction,Random Forests\tnull\tRarely\tnull\tnull\tOften\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tSometimes\tOften\tnull\tMost of the time\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\t0\t100\t0\t0\t0\t0\tEnough to explain the algorithm to someone non-technical\tCompany politics / Lack of management/financial support for a data science team,Privacy issues,Scaling data science solution up to full database\tRarely\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tOften\tMost of the time\tnull\tnull\tnull\tnull\t26-50% of projects\tDo not know\tStandalone Team\tnull\tnull\tDocument-oriented (e.g. MongoDB/Elasticsearch),Flat files not in a database or cache (e.g. CSV, JSON, XML, PNG, MPG),Graph (e.g. GraphBase/Neo4j)\tCompany Developed Platform,I don\u0027t typically share data,Share Drive/SharePoint\tnull\tMercurial,Subversion,Other\tAlways\tnull\tnull\tI am not currently employed\t5\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\nFemale\tUnited States\t30\tNot employed, but looking for work\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tPython\tRandom Forests\tPython\tDataset aggregator/platform (i.e. Socrata/Kaggle Datasets/data.world/etc.)\tKaggle\tnull\tnull\tnull\tnull\tnull\tnull\tSomewhat useful\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tBecoming a Data Scientist Podcast,Siraj Raval YouTube Channel\t1-2 years\tnull\tNice to have\tUnnecessary\tnull\tUnnecessary\tnull\tNecessary\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\t2 - 10 hours\tMaster\u0027s degree\tYes\tMaster\u0027s degree\tComputer Science\tLess than a year\tSoftware Developer/Software Engineer\tUniversity courses\t10\t30\t0\t30\t30\t0\tComputer Vision,Supervised Machine Learning (Tabular Data),Unsupervised Learning\tBayesian Techniques,Decision Trees - Gradient Boosted Machines,Decision Trees - Random Forests,Logistic Regression,Neural Networks - CNNs,Support Vector Machines (SVMs)\tA bachelor\u0027s degree\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tSomewhat important\tnull\nMale\tCanada\t28\tNot employed, but looking for work\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tAmazon Web services\tDeep learning\tR\tDataset aggregator/platform (i.e. Socrata/Kaggle Datasets/data.world/etc.)\tArxiv,College/University,Kaggle,Online courses,YouTube Videos\tVery useful\tnull\tSomewhat useful\tnull\tnull\tnull\tSomewhat useful\tnull\tnull\tnull\tVery useful\tnull\tnull\tnull\tnull\tnull\tnull\tVery useful\tFastML Blog,No Free Hunch Blog,Talking Machines Podcast\t1-2 years\tNecessary\tnull\tnull\tnull\tnull\tNecessary\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tCoursera,edX\tBasic laptop (Macbook)\t2 - 10 hours\tGithub Portfolio\tYes\tMaster\u0027s degree\tEngineering (non-computer focused)\t3 to 5 years\tData Scientist,Machine Learning Engineer\tUniversity courses\t20\t50\t0\t30\t0\t0\tAdversarial Learning,Computer Vision,Natural Language Processing\tDecision Trees - Random Forests,Ensemble Methods,Neural Networks - CNNs,Support Vector Machines (SVMs)\tA bachelor\u0027s degree\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tAsking friends, family members, or former colleagues for leads\t1-2\tVery Important\tVery Important\tVery Important\tVery Important\tVery Important\tVery Important\tVery Important\tVery Important\tVery Important\tVery Important\tVery Important\tVery Important\tVery Important\tVery Important\tVery Important\nMale\tUnited States\t56\tIndependent contractor, freelancer, or self-employed\tnull\tnull\tYes\tnull\tOperations Research Practitioner\tPoorly\tSelf-employed\tTensorFlow\tNeural Nets\tPython\tI collect my own data (e.g. web-scraping)\tBlogs,College/University,Conferences,Friends network,Official documentation,Online courses,Personal Projects\tnull\tVery useful\tVery useful\tnull\tVery useful\tVery useful\tnull\tnull\tnull\tVery useful\tVery useful\tVery useful\tnull\tnull\tnull\tnull\tnull\tnull\tKDnuggets Blog\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tYes\tMaster\u0027s degree\tMathematics or statistics\tMore than 10 years\tBusiness Analyst,Operations Research Practitioner,Predictive Modeler,Programmer,Other\tUniversity courses\t30\t0\t40\t30\t0\t0\tRecommendation Engines,Reinforcement learning,Supervised Machine Learning (Tabular Data),Survival Analysis,Time Series,Unsupervised Learning\tBayesian Techniques,Decision Trees - Gradient Boosted Machines,Decision Trees - Random Forests,Ensemble Methods,Evolutionary Approaches,Gradient Boosting,Hidden Markov Models HMMs,Logistic Regression,Markov Logic Networks,Neural Networks - CNNs,Neural Networks - GANs,Neural Networks - RNNs,Support Vector Machines (SVMs)\tHigh school\tMix of fields\tnull\tnull\tnull\tnull\tVery important\tAnalyze and understand data to influence product or business decisions\tLaptop + Cloud service (AWS, Azure, GCE ...)\tRelational data\tAlways\t1GB\tBayesian Techniques,Decision Trees,Random Forests,Regression/Logistic Regression\tAmazon Machine Learning,Amazon Web services,Cloudera,Hadoop/Hive/Pig,Impala,Java,Mathematica,MATLAB/Octave,Microsoft Excel Data Mining,Microsoft SQL Server Data Mining,NoSQL,Python,R,SAS Base,SAS JMP,SQL,Tableau\tRarely\tOften\tnull\tnull\tRarely\tnull\tnull\tnull\tRarely\tnull\tnull\tnull\tnull\tRarely\tRarely\tnull\tnull\tnull\tnull\tRarely\tRarely\tnull\tSometimes\tnull\tRarely\tnull\tRarely\tnull\tnull\tnull\tRarely\tnull\tRarely\tnull\tnull\tnull\tnull\tSometimes\tnull\tRarely\tnull\tOften\tnull\tnull\tRarely\tnull\tnull\tnull\tnull\tnull\tnull\tA/B Testing,Bayesian Techniques,Data Visualization,Decision Trees,Ensemble Methods,Logistic Regression,Markov Logic Networks,Naive Bayes,Neural Networks,Random Forests,Simulation,Time Series Analysis\tSometimes\tnull\tSometimes\tnull\tnull\tnull\tSometimes\tOften\tSometimes\tnull\tnull\tnull\tnull\tnull\tnull\tSometimes\tOften\tSometimes\tnull\tSometimes\tnull\tnull\tSometimes\tnull\tnull\tnull\tOften\tnull\tnull\tOften\tnull\tnull\tnull\t50\t20\t0\t10\t20\t0\tEnough to refine and innovate on the algorithm\tCompany politics / Lack of management/financial support for a data science team,Data Science results not used by business decision makers,Did not instrument data useful for scientific analysis and decision-making,Difficulties in deployment/scoring,Dirty data,Explaining data science to others,Inability to integrate findings into organization\u0027s decision-making process,Lack of data science talent in the organization,Lack of funds to buy useful datasets from external sources,Lack of significant domain expert input,Limitations in the state of the art in machine learning,Limitations of tools,Maintaining responsible expectations about the potential impact of data science projects,Organization is small and cannot afford a data science team,Privacy issues,Scaling data science solution up to full database,Team using multiple ad-hoc development environments such as Python/R/Java/etc.,The lack of a clear question to be answering or a clear direction to go in with the available data,Unavailability of/difficult access to data\tOften\tOften\tOften\tOften\tOften\tOften\tnull\tOften\tOften\tOften\tMost of the time\tOften\tOften\tOften\tnull\tOften\tOften\tOften\tOften\tOften\tOften\tnull\t100% of projects\tEntirely internal\tStandalone Team\tElectricity data sets from government and states\tEverything is custom, there is never a tool that can do it all as they claim.  Nothing is as easy as it might be, but that is the nature of the beast\tColumn-oriented relational (e.g. KDB/MariaDB),Flat files not in a database or cache (e.g. CSV, JSON, XML, PNG, MPG),Other tabular (e.g. Cassandra/BigTable/BigQuery/Redshift),Row-oriented relational (e.g. MySQL/Microsoft SQL Server)\tCompany Developed Platform,Email\tnull\tGeneric cloud file sharing software (Dropbox/Box/etc.),Generic non-cloud file sharing software (Email/Shared Server/etc.)\tnull\t250,000\tUSD\tHas increased 20% or more\t10 - Highly Satisfied\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\nMale\tTaiwan\t38\tEmployed full-time\tnull\tnull\tYes\tnull\tComputer Scientist\tFine\tEmployed by a company that doesn\u0027t perform advanced analytics\tTensorFlow\tText Mining\tPython\tGitHub\tArxiv,Conferences,Kaggle,Textbook\tVery useful\tnull\tnull\tnull\tSomewhat useful\tnull\tSomewhat useful\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tSomewhat useful\tnull\tnull\tnull\tData Machina Newsletter,Jack\u0027s Import AI Newsletter,O\u0027Reilly Data Newsletter\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tNo\tDoctoral degree\tEngineering (non-computer focused)\tMore than 10 years\tComputer Scientist,Data Analyst,Data Miner,Data Scientist,Engineer,Machine Learning Engineer,Predictive Modeler,Programmer,Researcher,Software Developer/Software Engineer\tUniversity courses\t60\t5\t5\t30\t0\t0\tComputer Vision,Outlier detection (e.g. Fraud detection),Recommendation Engines,Supervised Machine Learning (Tabular Data),Time Series,Unsupervised Learning\tBayesian Techniques,Decision Trees - Gradient Boosted Machines,Decision Trees - Random Forests,Ensemble Methods,Evolutionary Approaches,Logistic Regression,Neural Networks - CNNs,Neural Networks - GANs,Neural Networks - RNNs,Support Vector Machines (SVMs)\tPrimary/elementary school\tTechnology\t5,000 to 9,999 employees\tStayed the same\tDon\u0027t know\tA tech-specific job board\tSomewhat important\tBuild prototypes to explore applying machine learning to new areas\tGaming Laptop (Laptop + CUDA capable GPU),GPU accelerated Workstation,Laptop or Workstation and private datacenters,Workstation + Cloud service\tImage data,Relational data\tMost of the time\t100GB\tBayesian Techniques,CNNs,Ensemble Methods,Neural Networks,Regression/Logistic Regression,SVMs\tC/C++,Jupyter notebooks,MATLAB/Octave,Python,R,TensorFlow\tnull\tnull\tnull\tMost of the time\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tSometimes\tnull\tnull\tnull\tOften\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tSometimes\tnull\tSometimes\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tSometimes\tnull\tnull\tnull\tnull\tnull\tAssociation Rules,Bayesian Techniques,CNNs,Collaborative Filtering,Data Visualization,Decision Trees,Ensemble Methods,Evolutionary Approaches,kNN and Other Clustering,Logistic Regression,Naive Bayes,Neural Networks,PCA and Dimensionality Reduction,RNNs,Segmentation,SVMs,Time Series Analysis\tnull\tSometimes\tOften\tMost of the time\tSometimes\tnull\tMost of the time\tSometimes\tOften\tSometimes\tnull\tnull\tnull\tMost of the time\tnull\tSometimes\tnull\tSometimes\tnull\tMost of the time\tSometimes\tnull\tnull\tnull\tSometimes\tOften\tnull\tMost of the time\tnull\tSometimes\tnull\tnull\tnull\t30\t20\t15\t15\t20\t0\tEnough to refine and innovate on the algorithm\tCompany politics / Lack of management/financial support for a data science team,Data Science results not used by business decision makers,Lack of data science talent in the organization,Lack of funds to buy useful datasets from external sources,Lack of significant domain expert input,Need to coordinate with IT,Privacy issues,Team using multiple ad-hoc development environments such as Python/R/Java/etc.\tOften\tSometimes\tnull\tnull\tnull\tnull\tnull\tnull\tSometimes\tSometimes\tSometimes\tnull\tnull\tnull\tSometimes\tnull\tMost of the time\tnull\tSometimes\tnull\tnull\tnull\t10-25% of projects\tApproximately half internal and half external\tBusiness Department\tnull\tnull\tFlat files not in a database or cache (e.g. CSV, JSON, XML, PNG, MPG)\tCompany Developed Platform\tnull\tGit\tRarely\tnull\tnull\tI do not want to share information about my salary/compensation\t2\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526373713125_-989841974",
+      "id": "20180515-174153_426344760",
+      "dateCreated": "2018-05-15 17:41:53.125",
+      "dateStarted": "2018-05-15 18:15:55.639",
+      "dateFinished": "2018-05-15 18:15:56.500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## 전처리: `conversionRates.csv`",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-17 15:47:55.501",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e전처리: \u003ccode\u003econversionRates.csv\u003c/code\u003e\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526539647485_-818898323",
+      "id": "20180517-154727_579541986",
+      "dateCreated": "2018-05-17 15:47:27.485",
+      "dateStarted": "2018-05-17 15:47:55.502",
+      "dateFinished": "2018-05-17 15:47:55.507",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nCREATE TEMPORARY TABLE exchange_tmp\nUSING CSV\nOPTIONS (\n    path \u003d \u0027/Users/jun/Downloads/kaggle-survey-2017/conversionRates.csv\u0027,\n    header \u003d true,\n    multiLine \u003d true,\n    nullValue \u003d \u0027NA\u0027\n)",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-17 15:47:24.288",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {}
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": ""
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526539432933_-253476663",
+      "id": "20180517-154352_767862236",
+      "dateCreated": "2018-05-17 15:43:52.933",
+      "dateStarted": "2018-05-17 15:45:06.351",
+      "dateFinished": "2018-05-17 15:45:06.438",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nCREATE TABLE exchange\nUSING PARQUET\nLOCATION \u0027outputs/exchange.parquet\u0027\nAS\nSELECT\n    originCountry,\n    CAST(exchangeRate AS FLOAT) AS exchangeRate\nFROM exchange_tmp",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-17 15:51:41.253",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {}
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": ""
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526539592190_-1187362335",
+      "id": "20180517-154632_334893680",
+      "dateCreated": "2018-05-17 15:46:32.190",
+      "dateStarted": "2018-05-17 15:47:11.144",
+      "dateFinished": "2018-05-17 15:47:11.782",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nSELECT *\nFROM exchange",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-17 15:51:57.429",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "originCountry": "string",
+                      "exchangeRate": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "originCountry",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "exchangeRate",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "originCountry\texchangeRate\nUSD\t1.0\nEUR\t1.195826\nINR\t0.01562\nGBP\t1.324188\nBRL\t0.32135\nRUB\t0.017402\nCAD\t0.823688\nAUD\t0.80231\nJPY\t0.009108\nCNY\t0.153\nPLN\t0.281104\nSGD\t0.742589\nZAR\t0.077002\nCHF\t1.043382\nMXN\t0.056414\nTWD\t0.033304\nCOP\t3.42E-4\nPKR\t0.009476\nTRY\t0.29178\nDKK\t0.16073\nIDR\t7.6E-5\nKRW\t8.86E-4\nPHP\t0.019637\nIRR\t3.0E-5\nSEK\t0.125204\nHUF\t0.003896\nNZD\t0.727801\nCZK\t0.04582\nILS\t0.282974\nARS\t0.058444\nHKD\t0.127998\nNGN\t0.002788\nNOK\t0.127502\nCLP\t0.001606\nMYR\t0.237786\nAED\t0.272256\nKES\t0.009726\nLKR\t0.006536\nEGP\t0.056656\nTHB\t0.030192\nUAH\t0.038368\nALL\t0.008956\nRON\t0.259964\nMAD\t0.107076\nRSD\t0.01002\nAMD\t0.00209\nBDT\t0.012162\nPEN\t0.308962\nUGX\t2.78E-4\nVND\t4.4E-5\nXOF\t0.001823\nHRK\t0.160606\nNPR\t0.009754\nBGN\t0.611395\nETB\t0.042395\nKZT\t0.002948\nTND\t0.410899\nAFN\t0.01457\nBHD\t2.652053\nBIF\t5.72E-4\nBSD\t0.998112\nDOP\t0.02095\nGTQ\t0.136926\nIQD\t8.5E-4\nSDG\t0.149504\nTTD\t0.147376\nVEF\t0.09987\nAZN\t0.588352\nBAM\t0.611383\nBYN\t0.518071\nCRC\t0.001726\nCUP\t0.04\nDZD\t0.009006\nGHS\t0.22571\nISK\t0.009393\nJOD\t1.41062\nMGA\t3.38E-4\nMUR\t0.030142\nOMR\t2.597362\nPAB\t1.0\nSAR\t0.266654\nSVC\t0.114124\nSZL\t0.077002\nUYU\t0.034642\nXAF\t0.001823\nYER\t0.003996\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526373026792_-1509919792",
+      "id": "20180515-173026_663464075",
+      "dateCreated": "2018-05-15 17:30:26.792",
+      "dateStarted": "2018-05-17 15:51:46.842",
+      "dateFinished": "2018-05-17 15:51:46.902",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-17 15:45:09.445",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1526539509445_-2099410531",
+      "id": "20180517-154509_140362661",
+      "dateCreated": "2018-05-17 15:45:09.445",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "0.Preprocessing",
+  "id": "2DFQ6WA7X",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

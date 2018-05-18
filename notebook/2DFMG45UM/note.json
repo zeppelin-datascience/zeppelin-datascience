@@ -1,0 +1,1146 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n# 1.3. Histogram with Groups",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-19 02:30:32.008",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e1.3. Histogram with Groups\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526664393802_1652433043",
+      "id": "20180517-212423_511778085",
+      "dateCreated": "2018-05-19 02:26:33.802",
+      "dateStarted": "2018-05-19 02:30:32.010",
+      "dateFinished": "2018-05-19 02:30:34.221",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "{// Simple track to suppress outputs.\n    val numericalColumns \u003d spark.table(\"survey\").dtypes.filter(_._2 !\u003d \"StringType\").map(_._1)\n    val categoricalColumns \u003d spark.table(\"survey\").dtypes.filter(_._2 \u003d\u003d \"StringType\").map(_._1)\n    \n    val numBins \u003d z.textbox(\"막대 개수\", \"10\").toString\n    val selectedColumn \u003d z.select(\"컬럼\", numericalColumns(0), numericalColumns.map(x \u003d\u003e (x, x)))\n    val selectedGroup \u003d z.select(\"그룹\", categoricalColumns(0), categoricalColumns.map(x \u003d\u003e (x, x)))\n    \n    z.angularBind(\"numBins\", numBins) // Override the dynamic form \"numBins\".\n    z.angularBind(\"column\", selectedColumn)   // Override the dynamic form \"column\".\n    z.angularBind(\"group\", selectedGroup)\n    \n    z.run(\"20180519-003745_400359499\")  // !!! Copy and paste your paragraph ID!\n}",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-19 02:26:33.804",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "runOnSelectionChange": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "막대 개수": "10",
+          "컬럼": "Age",
+          "그룹": "EmploymentStatus"
+        },
+        "forms": {
+          "막대 개수": {
+            "type": "TextBox",
+            "name": "막대 개수",
+            "displayName": "막대 개수",
+            "defaultValue": "10",
+            "hidden": false
+          },
+          "컬럼": {
+            "type": "Select",
+            "options": [
+              {
+                "value": "Age",
+                "displayName": "Age"
+              },
+              {
+                "value": "LearningCategorySelfTaught",
+                "displayName": "LearningCategorySelfTaught"
+              },
+              {
+                "value": "LearningCategoryOnlineCourses",
+                "displayName": "LearningCategoryOnlineCourses"
+              },
+              {
+                "value": "LearningCategoryWork",
+                "displayName": "LearningCategoryWork"
+              },
+              {
+                "value": "LearningCategoryUniversity",
+                "displayName": "LearningCategoryUniversity"
+              },
+              {
+                "value": "LearningCategoryKaggle",
+                "displayName": "LearningCategoryKaggle"
+              },
+              {
+                "value": "LearningCategoryOther",
+                "displayName": "LearningCategoryOther"
+              },
+              {
+                "value": "TimeGatheringData",
+                "displayName": "TimeGatheringData"
+              },
+              {
+                "value": "TimeModelBuilding",
+                "displayName": "TimeModelBuilding"
+              },
+              {
+                "value": "TimeProduction",
+                "displayName": "TimeProduction"
+              },
+              {
+                "value": "TimeVisualizing",
+                "displayName": "TimeVisualizing"
+              },
+              {
+                "value": "TimeFindingInsights",
+                "displayName": "TimeFindingInsights"
+              },
+              {
+                "value": "TimeOtherSelect",
+                "displayName": "TimeOtherSelect"
+              }
+            ],
+            "name": "컬럼",
+            "displayName": "컬럼",
+            "defaultValue": "Age",
+            "hidden": false
+          },
+          "그룹": {
+            "type": "Select",
+            "options": [
+              {
+                "value": "GenderSelect",
+                "displayName": "GenderSelect"
+              },
+              {
+                "value": "Country",
+                "displayName": "Country"
+              },
+              {
+                "value": "EmploymentStatus",
+                "displayName": "EmploymentStatus"
+              },
+              {
+                "value": "StudentStatus",
+                "displayName": "StudentStatus"
+              },
+              {
+                "value": "LearningDataScience",
+                "displayName": "LearningDataScience"
+              },
+              {
+                "value": "CodeWriter",
+                "displayName": "CodeWriter"
+              },
+              {
+                "value": "CareerSwitcher",
+                "displayName": "CareerSwitcher"
+              },
+              {
+                "value": "CurrentJobTitleSelect",
+                "displayName": "CurrentJobTitleSelect"
+              },
+              {
+                "value": "TitleFit",
+                "displayName": "TitleFit"
+              },
+              {
+                "value": "CurrentEmployerType",
+                "displayName": "CurrentEmployerType"
+              },
+              {
+                "value": "MLToolNextYearSelect",
+                "displayName": "MLToolNextYearSelect"
+              },
+              {
+                "value": "MLMethodNextYearSelect",
+                "displayName": "MLMethodNextYearSelect"
+              },
+              {
+                "value": "LanguageRecommendationSelect",
+                "displayName": "LanguageRecommendationSelect"
+              },
+              {
+                "value": "PublicDatasetsSelect",
+                "displayName": "PublicDatasetsSelect"
+              },
+              {
+                "value": "LearningPlatformSelect",
+                "displayName": "LearningPlatformSelect"
+              },
+              {
+                "value": "LearningPlatformUsefulnessArxiv",
+                "displayName": "LearningPlatformUsefulnessArxiv"
+              },
+              {
+                "value": "LearningPlatformUsefulnessBlogs",
+                "displayName": "LearningPlatformUsefulnessBlogs"
+              },
+              {
+                "value": "LearningPlatformUsefulnessCollege",
+                "displayName": "LearningPlatformUsefulnessCollege"
+              },
+              {
+                "value": "LearningPlatformUsefulnessCompany",
+                "displayName": "LearningPlatformUsefulnessCompany"
+              },
+              {
+                "value": "LearningPlatformUsefulnessConferences",
+                "displayName": "LearningPlatformUsefulnessConferences"
+              },
+              {
+                "value": "LearningPlatformUsefulnessFriends",
+                "displayName": "LearningPlatformUsefulnessFriends"
+              },
+              {
+                "value": "LearningPlatformUsefulnessKaggle",
+                "displayName": "LearningPlatformUsefulnessKaggle"
+              },
+              {
+                "value": "LearningPlatformUsefulnessNewsletters",
+                "displayName": "LearningPlatformUsefulnessNewsletters"
+              },
+              {
+                "value": "LearningPlatformUsefulnessCommunities",
+                "displayName": "LearningPlatformUsefulnessCommunities"
+              },
+              {
+                "value": "LearningPlatformUsefulnessDocumentation",
+                "displayName": "LearningPlatformUsefulnessDocumentation"
+              },
+              {
+                "value": "LearningPlatformUsefulnessCourses",
+                "displayName": "LearningPlatformUsefulnessCourses"
+              },
+              {
+                "value": "LearningPlatformUsefulnessProjects",
+                "displayName": "LearningPlatformUsefulnessProjects"
+              },
+              {
+                "value": "LearningPlatformUsefulnessPodcasts",
+                "displayName": "LearningPlatformUsefulnessPodcasts"
+              },
+              {
+                "value": "LearningPlatformUsefulnessSO",
+                "displayName": "LearningPlatformUsefulnessSO"
+              },
+              {
+                "value": "LearningPlatformUsefulnessTextbook",
+                "displayName": "LearningPlatformUsefulnessTextbook"
+              },
+              {
+                "value": "LearningPlatformUsefulnessTradeBook",
+                "displayName": "LearningPlatformUsefulnessTradeBook"
+              },
+              {
+                "value": "LearningPlatformUsefulnessTutoring",
+                "displayName": "LearningPlatformUsefulnessTutoring"
+              },
+              {
+                "value": "LearningPlatformUsefulnessYouTube",
+                "displayName": "LearningPlatformUsefulnessYouTube"
+              },
+              {
+                "value": "BlogsPodcastsNewslettersSelect",
+                "displayName": "BlogsPodcastsNewslettersSelect"
+              },
+              {
+                "value": "LearningDataScienceTime",
+                "displayName": "LearningDataScienceTime"
+              },
+              {
+                "value": "JobSkillImportanceBigData",
+                "displayName": "JobSkillImportanceBigData"
+              },
+              {
+                "value": "JobSkillImportanceDegree",
+                "displayName": "JobSkillImportanceDegree"
+              },
+              {
+                "value": "JobSkillImportanceStats",
+                "displayName": "JobSkillImportanceStats"
+              },
+              {
+                "value": "JobSkillImportanceEnterpriseTools",
+                "displayName": "JobSkillImportanceEnterpriseTools"
+              },
+              {
+                "value": "JobSkillImportancePython",
+                "displayName": "JobSkillImportancePython"
+              },
+              {
+                "value": "JobSkillImportanceR",
+                "displayName": "JobSkillImportanceR"
+              },
+              {
+                "value": "JobSkillImportanceSQL",
+                "displayName": "JobSkillImportanceSQL"
+              },
+              {
+                "value": "JobSkillImportanceKaggleRanking",
+                "displayName": "JobSkillImportanceKaggleRanking"
+              },
+              {
+                "value": "JobSkillImportanceMOOC",
+                "displayName": "JobSkillImportanceMOOC"
+              },
+              {
+                "value": "JobSkillImportanceVisualizations",
+                "displayName": "JobSkillImportanceVisualizations"
+              },
+              {
+                "value": "JobSkillImportanceOtherSelect1",
+                "displayName": "JobSkillImportanceOtherSelect1"
+              },
+              {
+                "value": "JobSkillImportanceOtherSelect2",
+                "displayName": "JobSkillImportanceOtherSelect2"
+              },
+              {
+                "value": "JobSkillImportanceOtherSelect3",
+                "displayName": "JobSkillImportanceOtherSelect3"
+              },
+              {
+                "value": "CoursePlatformSelect",
+                "displayName": "CoursePlatformSelect"
+              },
+              {
+                "value": "HardwarePersonalProjectsSelect",
+                "displayName": "HardwarePersonalProjectsSelect"
+              },
+              {
+                "value": "TimeSpentStudying",
+                "displayName": "TimeSpentStudying"
+              },
+              {
+                "value": "ProveKnowledgeSelect",
+                "displayName": "ProveKnowledgeSelect"
+              },
+              {
+                "value": "DataScienceIdentitySelect",
+                "displayName": "DataScienceIdentitySelect"
+              },
+              {
+                "value": "FormalEducation",
+                "displayName": "FormalEducation"
+              },
+              {
+                "value": "MajorSelect",
+                "displayName": "MajorSelect"
+              },
+              {
+                "value": "Tenure",
+                "displayName": "Tenure"
+              },
+              {
+                "value": "PastJobTitlesSelect",
+                "displayName": "PastJobTitlesSelect"
+              },
+              {
+                "value": "FirstTrainingSelect",
+                "displayName": "FirstTrainingSelect"
+              },
+              {
+                "value": "MLSkillsSelect",
+                "displayName": "MLSkillsSelect"
+              },
+              {
+                "value": "MLTechniquesSelect",
+                "displayName": "MLTechniquesSelect"
+              },
+              {
+                "value": "ParentsEducation",
+                "displayName": "ParentsEducation"
+              },
+              {
+                "value": "EmployerIndustry",
+                "displayName": "EmployerIndustry"
+              },
+              {
+                "value": "EmployerSize",
+                "displayName": "EmployerSize"
+              },
+              {
+                "value": "EmployerSizeChange",
+                "displayName": "EmployerSizeChange"
+              },
+              {
+                "value": "EmployerMLTime",
+                "displayName": "EmployerMLTime"
+              },
+              {
+                "value": "EmployerSearchMethod",
+                "displayName": "EmployerSearchMethod"
+              },
+              {
+                "value": "UniversityImportance",
+                "displayName": "UniversityImportance"
+              },
+              {
+                "value": "JobFunctionSelect",
+                "displayName": "JobFunctionSelect"
+              },
+              {
+                "value": "WorkHardwareSelect",
+                "displayName": "WorkHardwareSelect"
+              },
+              {
+                "value": "WorkDataTypeSelect",
+                "displayName": "WorkDataTypeSelect"
+              },
+              {
+                "value": "WorkProductionFrequency",
+                "displayName": "WorkProductionFrequency"
+              },
+              {
+                "value": "WorkDatasetSize",
+                "displayName": "WorkDatasetSize"
+              },
+              {
+                "value": "WorkAlgorithmsSelect",
+                "displayName": "WorkAlgorithmsSelect"
+              },
+              {
+                "value": "WorkToolsSelect",
+                "displayName": "WorkToolsSelect"
+              },
+              {
+                "value": "WorkToolsFrequencyAmazonML",
+                "displayName": "WorkToolsFrequencyAmazonML"
+              },
+              {
+                "value": "WorkToolsFrequencyAWS",
+                "displayName": "WorkToolsFrequencyAWS"
+              },
+              {
+                "value": "WorkToolsFrequencyAngoss",
+                "displayName": "WorkToolsFrequencyAngoss"
+              },
+              {
+                "value": "WorkToolsFrequencyC",
+                "displayName": "WorkToolsFrequencyC"
+              },
+              {
+                "value": "WorkToolsFrequencyCloudera",
+                "displayName": "WorkToolsFrequencyCloudera"
+              },
+              {
+                "value": "WorkToolsFrequencyDataRobot",
+                "displayName": "WorkToolsFrequencyDataRobot"
+              },
+              {
+                "value": "WorkToolsFrequencyFlume",
+                "displayName": "WorkToolsFrequencyFlume"
+              },
+              {
+                "value": "WorkToolsFrequencyGCP",
+                "displayName": "WorkToolsFrequencyGCP"
+              },
+              {
+                "value": "WorkToolsFrequencyHadoop",
+                "displayName": "WorkToolsFrequencyHadoop"
+              },
+              {
+                "value": "WorkToolsFrequencyIBMCognos",
+                "displayName": "WorkToolsFrequencyIBMCognos"
+              },
+              {
+                "value": "WorkToolsFrequencyIBMSPSSModeler",
+                "displayName": "WorkToolsFrequencyIBMSPSSModeler"
+              },
+              {
+                "value": "WorkToolsFrequencyIBMSPSSStatistics",
+                "displayName": "WorkToolsFrequencyIBMSPSSStatistics"
+              },
+              {
+                "value": "WorkToolsFrequencyIBMWatson",
+                "displayName": "WorkToolsFrequencyIBMWatson"
+              },
+              {
+                "value": "WorkToolsFrequencyImpala",
+                "displayName": "WorkToolsFrequencyImpala"
+              },
+              {
+                "value": "WorkToolsFrequencyJava",
+                "displayName": "WorkToolsFrequencyJava"
+              },
+              {
+                "value": "WorkToolsFrequencyJulia",
+                "displayName": "WorkToolsFrequencyJulia"
+              },
+              {
+                "value": "WorkToolsFrequencyJupyter",
+                "displayName": "WorkToolsFrequencyJupyter"
+              },
+              {
+                "value": "WorkToolsFrequencyKNIMECommercial",
+                "displayName": "WorkToolsFrequencyKNIMECommercial"
+              },
+              {
+                "value": "WorkToolsFrequencyKNIMEFree",
+                "displayName": "WorkToolsFrequencyKNIMEFree"
+              },
+              {
+                "value": "WorkToolsFrequencyMathematica",
+                "displayName": "WorkToolsFrequencyMathematica"
+              },
+              {
+                "value": "WorkToolsFrequencyMATLAB",
+                "displayName": "WorkToolsFrequencyMATLAB"
+              },
+              {
+                "value": "WorkToolsFrequencyAzure",
+                "displayName": "WorkToolsFrequencyAzure"
+              },
+              {
+                "value": "WorkToolsFrequencyExcel",
+                "displayName": "WorkToolsFrequencyExcel"
+              },
+              {
+                "value": "WorkToolsFrequencyMicrosoftRServer",
+                "displayName": "WorkToolsFrequencyMicrosoftRServer"
+              },
+              {
+                "value": "WorkToolsFrequencyMicrosoftSQL",
+                "displayName": "WorkToolsFrequencyMicrosoftSQL"
+              },
+              {
+                "value": "WorkToolsFrequencyMinitab",
+                "displayName": "WorkToolsFrequencyMinitab"
+              },
+              {
+                "value": "WorkToolsFrequencyNoSQL",
+                "displayName": "WorkToolsFrequencyNoSQL"
+              },
+              {
+                "value": "WorkToolsFrequencyOracle",
+                "displayName": "WorkToolsFrequencyOracle"
+              },
+              {
+                "value": "WorkToolsFrequencyOrange",
+                "displayName": "WorkToolsFrequencyOrange"
+              },
+              {
+                "value": "WorkToolsFrequencyPerl",
+                "displayName": "WorkToolsFrequencyPerl"
+              },
+              {
+                "value": "WorkToolsFrequencyPython",
+                "displayName": "WorkToolsFrequencyPython"
+              },
+              {
+                "value": "WorkToolsFrequencyQlik",
+                "displayName": "WorkToolsFrequencyQlik"
+              },
+              {
+                "value": "WorkToolsFrequencyR",
+                "displayName": "WorkToolsFrequencyR"
+              },
+              {
+                "value": "WorkToolsFrequencyRapidMinerCommercial",
+                "displayName": "WorkToolsFrequencyRapidMinerCommercial"
+              },
+              {
+                "value": "WorkToolsFrequencyRapidMinerFree",
+                "displayName": "WorkToolsFrequencyRapidMinerFree"
+              },
+              {
+                "value": "WorkToolsFrequencySalfrod",
+                "displayName": "WorkToolsFrequencySalfrod"
+              },
+              {
+                "value": "WorkToolsFrequencySAPBusinessObjects",
+                "displayName": "WorkToolsFrequencySAPBusinessObjects"
+              },
+              {
+                "value": "WorkToolsFrequencySASBase",
+                "displayName": "WorkToolsFrequencySASBase"
+              },
+              {
+                "value": "WorkToolsFrequencySASEnterprise",
+                "displayName": "WorkToolsFrequencySASEnterprise"
+              },
+              {
+                "value": "WorkToolsFrequencySASJMP",
+                "displayName": "WorkToolsFrequencySASJMP"
+              },
+              {
+                "value": "WorkToolsFrequencySpark",
+                "displayName": "WorkToolsFrequencySpark"
+              },
+              {
+                "value": "WorkToolsFrequencySQL",
+                "displayName": "WorkToolsFrequencySQL"
+              },
+              {
+                "value": "WorkToolsFrequencyStan",
+                "displayName": "WorkToolsFrequencyStan"
+              },
+              {
+                "value": "WorkToolsFrequencyStatistica",
+                "displayName": "WorkToolsFrequencyStatistica"
+              },
+              {
+                "value": "WorkToolsFrequencyTableau",
+                "displayName": "WorkToolsFrequencyTableau"
+              },
+              {
+                "value": "WorkToolsFrequencyTensorFlow",
+                "displayName": "WorkToolsFrequencyTensorFlow"
+              },
+              {
+                "value": "WorkToolsFrequencyTIBCO",
+                "displayName": "WorkToolsFrequencyTIBCO"
+              },
+              {
+                "value": "WorkToolsFrequencyUnix",
+                "displayName": "WorkToolsFrequencyUnix"
+              },
+              {
+                "value": "WorkToolsFrequencySelect1",
+                "displayName": "WorkToolsFrequencySelect1"
+              },
+              {
+                "value": "WorkToolsFrequencySelect2",
+                "displayName": "WorkToolsFrequencySelect2"
+              },
+              {
+                "value": "WorkFrequencySelect3",
+                "displayName": "WorkFrequencySelect3"
+              },
+              {
+                "value": "WorkMethodsSelect",
+                "displayName": "WorkMethodsSelect"
+              },
+              {
+                "value": "WorkMethodsFrequencyAB",
+                "displayName": "WorkMethodsFrequencyAB"
+              },
+              {
+                "value": "WorkMethodsFrequencyAssociationRules",
+                "displayName": "WorkMethodsFrequencyAssociationRules"
+              },
+              {
+                "value": "WorkMethodsFrequencyBayesian",
+                "displayName": "WorkMethodsFrequencyBayesian"
+              },
+              {
+                "value": "WorkMethodsFrequencyCNNs",
+                "displayName": "WorkMethodsFrequencyCNNs"
+              },
+              {
+                "value": "WorkMethodsFrequencyCollaborativeFiltering",
+                "displayName": "WorkMethodsFrequencyCollaborativeFiltering"
+              },
+              {
+                "value": "WorkMethodsFrequencyCrossValidation",
+                "displayName": "WorkMethodsFrequencyCrossValidation"
+              },
+              {
+                "value": "WorkMethodsFrequencyDataVisualization",
+                "displayName": "WorkMethodsFrequencyDataVisualization"
+              },
+              {
+                "value": "WorkMethodsFrequencyDecisionTrees",
+                "displayName": "WorkMethodsFrequencyDecisionTrees"
+              },
+              {
+                "value": "WorkMethodsFrequencyEnsembleMethods",
+                "displayName": "WorkMethodsFrequencyEnsembleMethods"
+              },
+              {
+                "value": "WorkMethodsFrequencyEvolutionaryApproaches",
+                "displayName": "WorkMethodsFrequencyEvolutionaryApproaches"
+              },
+              {
+                "value": "WorkMethodsFrequencyGANs",
+                "displayName": "WorkMethodsFrequencyGANs"
+              },
+              {
+                "value": "WorkMethodsFrequencyGBM",
+                "displayName": "WorkMethodsFrequencyGBM"
+              },
+              {
+                "value": "WorkMethodsFrequencyHMMs",
+                "displayName": "WorkMethodsFrequencyHMMs"
+              },
+              {
+                "value": "WorkMethodsFrequencyKNN",
+                "displayName": "WorkMethodsFrequencyKNN"
+              },
+              {
+                "value": "WorkMethodsFrequencyLiftAnalysis",
+                "displayName": "WorkMethodsFrequencyLiftAnalysis"
+              },
+              {
+                "value": "WorkMethodsFrequencyLogisticRegression",
+                "displayName": "WorkMethodsFrequencyLogisticRegression"
+              },
+              {
+                "value": "WorkMethodsFrequencyMLN",
+                "displayName": "WorkMethodsFrequencyMLN"
+              },
+              {
+                "value": "WorkMethodsFrequencyNaiveBayes",
+                "displayName": "WorkMethodsFrequencyNaiveBayes"
+              },
+              {
+                "value": "WorkMethodsFrequencyNLP",
+                "displayName": "WorkMethodsFrequencyNLP"
+              },
+              {
+                "value": "WorkMethodsFrequencyNeuralNetworks",
+                "displayName": "WorkMethodsFrequencyNeuralNetworks"
+              },
+              {
+                "value": "WorkMethodsFrequencyPCA",
+                "displayName": "WorkMethodsFrequencyPCA"
+              },
+              {
+                "value": "WorkMethodsFrequencyPrescriptiveModeling",
+                "displayName": "WorkMethodsFrequencyPrescriptiveModeling"
+              },
+              {
+                "value": "WorkMethodsFrequencyRandomForests",
+                "displayName": "WorkMethodsFrequencyRandomForests"
+              },
+              {
+                "value": "WorkMethodsFrequencyRecommenderSystems",
+                "displayName": "WorkMethodsFrequencyRecommenderSystems"
+              },
+              {
+                "value": "WorkMethodsFrequencyRNNs",
+                "displayName": "WorkMethodsFrequencyRNNs"
+              },
+              {
+                "value": "WorkMethodsFrequencySegmentation",
+                "displayName": "WorkMethodsFrequencySegmentation"
+              },
+              {
+                "value": "WorkMethodsFrequencySimulation",
+                "displayName": "WorkMethodsFrequencySimulation"
+              },
+              {
+                "value": "WorkMethodsFrequencySVMs",
+                "displayName": "WorkMethodsFrequencySVMs"
+              },
+              {
+                "value": "WorkMethodsFrequencyTextAnalysis",
+                "displayName": "WorkMethodsFrequencyTextAnalysis"
+              },
+              {
+                "value": "WorkMethodsFrequencyTimeSeriesAnalysis",
+                "displayName": "WorkMethodsFrequencyTimeSeriesAnalysis"
+              },
+              {
+                "value": "WorkMethodsFrequencySelect1",
+                "displayName": "WorkMethodsFrequencySelect1"
+              },
+              {
+                "value": "WorkMethodsFrequencySelect2",
+                "displayName": "WorkMethodsFrequencySelect2"
+              },
+              {
+                "value": "WorkMethodsFrequencySelect3",
+                "displayName": "WorkMethodsFrequencySelect3"
+              },
+              {
+                "value": "AlgorithmUnderstandingLevel",
+                "displayName": "AlgorithmUnderstandingLevel"
+              },
+              {
+                "value": "WorkChallengesSelect",
+                "displayName": "WorkChallengesSelect"
+              },
+              {
+                "value": "WorkChallengeFrequencyPolitics",
+                "displayName": "WorkChallengeFrequencyPolitics"
+              },
+              {
+                "value": "WorkChallengeFrequencyUnusedResults",
+                "displayName": "WorkChallengeFrequencyUnusedResults"
+              },
+              {
+                "value": "WorkChallengeFrequencyUnusefulInstrumenting",
+                "displayName": "WorkChallengeFrequencyUnusefulInstrumenting"
+              },
+              {
+                "value": "WorkChallengeFrequencyDeployment",
+                "displayName": "WorkChallengeFrequencyDeployment"
+              },
+              {
+                "value": "WorkChallengeFrequencyDirtyData",
+                "displayName": "WorkChallengeFrequencyDirtyData"
+              },
+              {
+                "value": "WorkChallengeFrequencyExplaining",
+                "displayName": "WorkChallengeFrequencyExplaining"
+              },
+              {
+                "value": "WorkChallengeFrequencyPass",
+                "displayName": "WorkChallengeFrequencyPass"
+              },
+              {
+                "value": "WorkChallengeFrequencyIntegration",
+                "displayName": "WorkChallengeFrequencyIntegration"
+              },
+              {
+                "value": "WorkChallengeFrequencyTalent",
+                "displayName": "WorkChallengeFrequencyTalent"
+              },
+              {
+                "value": "WorkChallengeFrequencyDataFunds",
+                "displayName": "WorkChallengeFrequencyDataFunds"
+              },
+              {
+                "value": "WorkChallengeFrequencyDomainExpertise",
+                "displayName": "WorkChallengeFrequencyDomainExpertise"
+              },
+              {
+                "value": "WorkChallengeFrequencyML",
+                "displayName": "WorkChallengeFrequencyML"
+              },
+              {
+                "value": "WorkChallengeFrequencyTools",
+                "displayName": "WorkChallengeFrequencyTools"
+              },
+              {
+                "value": "WorkChallengeFrequencyExpectations",
+                "displayName": "WorkChallengeFrequencyExpectations"
+              },
+              {
+                "value": "WorkChallengeFrequencyITCoordination",
+                "displayName": "WorkChallengeFrequencyITCoordination"
+              },
+              {
+                "value": "WorkChallengeFrequencyHiringFunds",
+                "displayName": "WorkChallengeFrequencyHiringFunds"
+              },
+              {
+                "value": "WorkChallengeFrequencyPrivacy",
+                "displayName": "WorkChallengeFrequencyPrivacy"
+              },
+              {
+                "value": "WorkChallengeFrequencyScaling",
+                "displayName": "WorkChallengeFrequencyScaling"
+              },
+              {
+                "value": "WorkChallengeFrequencyEnvironments",
+                "displayName": "WorkChallengeFrequencyEnvironments"
+              },
+              {
+                "value": "WorkChallengeFrequencyClarity",
+                "displayName": "WorkChallengeFrequencyClarity"
+              },
+              {
+                "value": "WorkChallengeFrequencyDataAccess",
+                "displayName": "WorkChallengeFrequencyDataAccess"
+              },
+              {
+                "value": "WorkChallengeFrequencyOtherSelect",
+                "displayName": "WorkChallengeFrequencyOtherSelect"
+              },
+              {
+                "value": "WorkDataVisualizations",
+                "displayName": "WorkDataVisualizations"
+              },
+              {
+                "value": "WorkInternalVsExternalTools",
+                "displayName": "WorkInternalVsExternalTools"
+              },
+              {
+                "value": "WorkMLTeamSeatSelect",
+                "displayName": "WorkMLTeamSeatSelect"
+              },
+              {
+                "value": "WorkDatasets",
+                "displayName": "WorkDatasets"
+              },
+              {
+                "value": "WorkDatasetsChallenge",
+                "displayName": "WorkDatasetsChallenge"
+              },
+              {
+                "value": "WorkDataStorage",
+                "displayName": "WorkDataStorage"
+              },
+              {
+                "value": "WorkDataSharing",
+                "displayName": "WorkDataSharing"
+              },
+              {
+                "value": "WorkDataSourcing",
+                "displayName": "WorkDataSourcing"
+              },
+              {
+                "value": "WorkCodeSharing",
+                "displayName": "WorkCodeSharing"
+              },
+              {
+                "value": "RemoteWork",
+                "displayName": "RemoteWork"
+              },
+              {
+                "value": "CompensationAmount",
+                "displayName": "CompensationAmount"
+              },
+              {
+                "value": "CompensationCurrency",
+                "displayName": "CompensationCurrency"
+              },
+              {
+                "value": "SalaryChange",
+                "displayName": "SalaryChange"
+              },
+              {
+                "value": "JobSatisfaction",
+                "displayName": "JobSatisfaction"
+              },
+              {
+                "value": "JobSearchResource",
+                "displayName": "JobSearchResource"
+              },
+              {
+                "value": "JobHuntTime",
+                "displayName": "JobHuntTime"
+              },
+              {
+                "value": "JobFactorLearning",
+                "displayName": "JobFactorLearning"
+              },
+              {
+                "value": "JobFactorSalary",
+                "displayName": "JobFactorSalary"
+              },
+              {
+                "value": "JobFactorOffice",
+                "displayName": "JobFactorOffice"
+              },
+              {
+                "value": "JobFactorLanguages",
+                "displayName": "JobFactorLanguages"
+              },
+              {
+                "value": "JobFactorCommute",
+                "displayName": "JobFactorCommute"
+              },
+              {
+                "value": "JobFactorManagement",
+                "displayName": "JobFactorManagement"
+              },
+              {
+                "value": "JobFactorExperienceLevel",
+                "displayName": "JobFactorExperienceLevel"
+              },
+              {
+                "value": "JobFactorDepartment",
+                "displayName": "JobFactorDepartment"
+              },
+              {
+                "value": "JobFactorTitle",
+                "displayName": "JobFactorTitle"
+              },
+              {
+                "value": "JobFactorCompanyFunding",
+                "displayName": "JobFactorCompanyFunding"
+              },
+              {
+                "value": "JobFactorImpact",
+                "displayName": "JobFactorImpact"
+              },
+              {
+                "value": "JobFactorRemote",
+                "displayName": "JobFactorRemote"
+              },
+              {
+                "value": "JobFactorIndustry",
+                "displayName": "JobFactorIndustry"
+              },
+              {
+                "value": "JobFactorLeaderReputation",
+                "displayName": "JobFactorLeaderReputation"
+              },
+              {
+                "value": "JobFactorDiversity",
+                "displayName": "JobFactorDiversity"
+              }
+            ],
+            "name": "그룹",
+            "displayName": "그룹",
+            "defaultValue": "GenderSelect",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1526664393804_-756776588",
+      "id": "20180519-003627_1725377296",
+      "dateCreated": "2018-05-19 02:26:33.804",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nWITH\ntarget (\nSELECT\n    ${column} AS x,\n    ${group} AS grp\nFROM survey\nWHERE ${column} IS NOT NULL\n),\nstats (\nSELECT\n    MIN(x) AS x_min,\n    ${numBins} AS num_bins,\n    (MAX(x) - MIN(x)) / ${numBins} AS bin_width\nFROM target\n),\nbin_tmp (\nSELECT\n    x, grp,\n    FLOOR((x - x_min) / bin_width) AS bin\nFROM\n    target\n    CROSS JOIN stats\n),\nbin (\nSELECT\n    x, grp, \n    CASE WHEN bin \u003d num_bins THEN num_bins - 1 ELSE bin END AS bin  -- 마지막 bin의 범위를 90 ~ 99이 아닌 90 ~ 100이 되도록\nFROM\n    bin_tmp\n    CROSS JOIN stats\n),\nbin_stats (\nSELECT\n    bin,\n    AVG(x) AS bin_avg,\n    MIN(x) AS bin_min,\n    MAX(x) AS bin_max,\n    MIN(bin_width) * bin AS bin_start,\n    MIN(bin_width) * (bin + 1) AS bin_end\nFROM\n    bin\n    CROSS JOIN stats\nGROUP BY bin\n),\nbin_group (\nSELECT bin, grp, COUNT(*) AS cnt\nFROM bin\nGROUP BY bin, grp\n)\nSELECT bin, grp, cnt, bin_avg, bin_min, bin_max, bin_start, bin_end\nFROM\n    bin_group\n    JOIN bin_stats USING (bin)\nORDER BY bin, grp",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-19 03:22:48.895",
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "bin": "string",
+                      "bin_cnt": "string",
+                      "bin_avg": "string",
+                      "bin_min": "string",
+                      "bin_max": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": true
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "bin_start",
+                  "index": 6.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [
+                {
+                  "name": "grp",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ],
+              "values": [
+                {
+                  "name": "cnt",
+                  "index": 2.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "bin\tgrp\tcnt\tbin_avg\tbin_min\tbin_max\tbin_start\tbin_end\n0\tEmployed full-time\t12\t1.7619047619047619\t0\t9\t0.0\t10.0\n0\tI prefer not to say\t4\t1.7619047619047619\t0\t9\t0.0\t10.0\n0\tIndependent contractor, freelancer, or self-employed\t1\t1.7619047619047619\t0\t9\t0.0\t10.0\n0\tNot employed, and not looking for work\t1\t1.7619047619047619\t0\t9\t0.0\t10.0\n0\tNot employed, but looking for work\t1\t1.7619047619047619\t0\t9\t0.0\t10.0\n0\tRetired\t2\t1.7619047619047619\t0\t9\t0.0\t10.0\n1\tEmployed full-time\t29\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tEmployed part-time\t45\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tI prefer not to say\t30\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tIndependent contractor, freelancer, or self-employed\t20\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tNot employed, and not looking for work\t144\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tNot employed, but looking for work\t95\t17.97252747252747\t10\t19\t10.0\t20.0\n1\tRetired\t1\t17.97252747252747\t10\t19\t10.0\t20.0\n2\tEmployed full-time\t4309\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tEmployed part-time\t610\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tI prefer not to say\t234\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tIndependent contractor, freelancer, or self-employed\t351\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tNot employed, and not looking for work\t637\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tNot employed, but looking for work\t1457\t24.84313725490196\t20\t29\t20.0\t30.0\n2\tRetired\t1\t24.84313725490196\t20\t29\t20.0\t30.0\n3\tEmployed full-time\t4014\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tEmployed part-time\t173\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tI prefer not to say\t69\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tIndependent contractor, freelancer, or self-employed\t398\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tNot employed, and not looking for work\t75\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tNot employed, but looking for work\t294\t33.79876715052694\t30\t39\t30.0\t40.0\n3\tRetired\t6\t33.79876715052694\t30\t39\t30.0\t40.0\n4\tEmployed full-time\t1557\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tEmployed part-time\t46\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tI prefer not to say\t29\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tIndependent contractor, freelancer, or self-employed\t274\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tNot employed, and not looking for work\t25\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tNot employed, but looking for work\t131\t43.74020319303338\t40\t49\t40.0\t50.0\n4\tRetired\t5\t43.74020319303338\t40\t49\t40.0\t50.0\n5\tEmployed full-time\t631\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tEmployed part-time\t21\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tI prefer not to say\t8\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tIndependent contractor, freelancer, or self-employed\t169\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tNot employed, and not looking for work\t18\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tNot employed, but looking for work\t76\t53.54002134471718\t50\t59\t50.0\t60.0\n5\tRetired\t14\t53.54002134471718\t50\t59\t50.0\t60.0\n6\tEmployed full-time\t136\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tEmployed part-time\t5\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tI prefer not to say\t3\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tIndependent contractor, freelancer, or self-employed\t67\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tNot employed, and not looking for work\t8\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tNot employed, but looking for work\t18\t63.44290657439446\t60\t69\t60.0\t70.0\n6\tRetired\t52\t63.44290657439446\t60\t69\t60.0\t70.0\n7\tEmployed full-time\t10\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tEmployed part-time\t1\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tI prefer not to say\t1\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tIndependent contractor, freelancer, or self-employed\t16\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tNot employed, but looking for work\t3\t72.51724137931035\t70\t79\t70.0\t80.0\n7\tRetired\t27\t72.51724137931035\t70\t79\t70.0\t80.0\n8\tEmployed full-time\t1\t80.83333333333333\t80\t83\t80.0\t90.0\n8\tIndependent contractor, freelancer, or self-employed\t1\t80.83333333333333\t80\t83\t80.0\t90.0\n8\tRetired\t4\t80.83333333333333\t80\t83\t80.0\t90.0\n9\tEmployed full-time\t3\t99.26666666666667\t94\t100\t90.0\t100.0\n9\tI prefer not to say\t4\t99.26666666666667\t94\t100\t90.0\t100.0\n9\tIndependent contractor, freelancer, or self-employed\t5\t99.26666666666667\t94\t100\t90.0\t100.0\n9\tNot employed, and not looking for work\t1\t99.26666666666667\t94\t100\t90.0\t100.0\n9\tRetired\t2\t99.26666666666667\t94\t100\t90.0\t100.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526664393804_1428027954",
+      "id": "20180519-003745_400359499",
+      "dateCreated": "2018-05-19 02:26:33.804",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-19 02:26:33.805",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1526664393805_1682700031",
+      "id": "20180519-004059_115985308",
+      "dateCreated": "2018-05-19 02:26:33.805",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "1.EDA/3.Histogram with Groups",
+  "id": "2DFMG45UM",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

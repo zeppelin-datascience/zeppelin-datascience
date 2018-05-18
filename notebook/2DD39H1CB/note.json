@@ -1,0 +1,749 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n# 1.1. Histogram using SQL\nKaggle Survey 데이터셋의 `Age` 컬럼을 SQL만을 사용하여 histogram으로 시각화해보자!",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-17 20:46:35.457",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e1.1. Histogram using SQL\u003c/h1\u003e\n\u003cp\u003eKaggle Survey 데이터셋의 \u003ccode\u003eAge\u003c/code\u003e 컬럼을 SQL만을 사용하여 histogram으로 시각화해보자!\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526527380332_2055884137",
+      "id": "20180517-122300_1940395165",
+      "dateCreated": "2018-05-17 12:23:00.332",
+      "dateStarted": "2018-05-17 20:46:35.458",
+      "dateFinished": "2018-05-17 20:46:35.461",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## 1) 나이별 설문자 수\n데이터 분석은 가장 멍청한 질문에서 시작합니다.\nSQL 쿼리 또한 가장 단순한 것에서부터 시작해봅시다.\n나이 별로 설문자 수를 세보세요!",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-17 20:51:29.919",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1) 나이별 설문자 수\u003c/h2\u003e\n\u003cp\u003e데이터 분석은 가장 멍청한 질문에서 시작합니다.\u003cbr/\u003eSQL 쿼리 또한 가장 단순한 것에서부터 시작해봅시다.\u003cbr/\u003e나이 별로 설문자 수를 세보세요!\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526527499292_444744852",
+      "id": "20180517-122459_406915801",
+      "dateCreated": "2018-05-17 12:24:59.292",
+      "dateStarted": "2018-05-17 20:51:29.919",
+      "dateFinished": "2018-05-17 20:51:29.923",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "처음 작성한 쿼리",
+      "text": "%sql\nSELECT age, COUNT(*)\nFROM survey\nGROUP BY age",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-19 03:22:47.533",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "age": "string",
+                      "cnt": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "age",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count(1)",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "age\tcount(1)\n31\t597\n65\t28\n53\t83\n78\t1\n34\t531\n28\t761\n76\t3\n27\t842\n26\t886\n44\t199\n12\t1\n22\t694\n47\t166\nnull\t331\n1\t4\n52\t132\n13\t3\n16\t24\n6\t2\n3\t2\n20\t395\n40\t366\n94\t1\n57\t88\n54\t74\n48\t158\n19\t193\n64\t21\n41\t223\n43\t198\n15\t13\n37\t384\n61\t38\n17\t42\n9\t1\n72\t7\n35\t577\n59\t49\n55\t91\n4\t1\n100\t10\n39\t320\n23\t839\n49\t132\n51\t100\n69\t16\n63\t42\n10\t1\n77\t4\n50\t189\n45\t226\n38\t354\n82\t1\n80\t4\n25\t969\n73\t6\n24\t898\n70\t22\n62\t29\n29\t731\n21\t584\n98\t1\n32\t560\n60\t56\n75\t5\n56\t76\n58\t55\n33\t530\n11\t3\n83\t1\n68\t16\n71\t5\n14\t6\n42\t255\n79\t2\n2\t1\n30\t778\n99\t3\n66\t24\n46\t144\n67\t19\n0\t10\n18\t78\n74\t3\n36\t398\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526527577543_1599197579",
+      "id": "20180517-122617_421111096",
+      "dateCreated": "2018-05-17 12:26:17.543",
+      "dateStarted": "2018-05-17 12:31:16.919",
+      "dateFinished": "2018-05-17 12:31:17.390",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n앗! NULL 값이 있네?! NULL을 제거하자!",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-17 20:36:07.266",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e앗! NULL 값이 있네?! NULL을 제거하자!\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526527885330_-505211060",
+      "id": "20180517-123125_642034389",
+      "dateCreated": "2018-05-17 12:31:25.331",
+      "dateStarted": "2018-05-17 20:36:07.267",
+      "dateFinished": "2018-05-17 20:36:09.643",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "NULL 값 제거한 쿼리",
+      "text": "%sql\nSELECT age, COUNT(*)\nFROM survey\nWHERE age IS NOT NULL\nGROUP BY age",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-19 03:22:47.624",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "age": "string",
+                      "count(1)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "age",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count(1)",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "age\tcount(1)\n31\t597\n65\t28\n53\t83\n78\t1\n34\t531\n28\t761\n76\t3\n27\t842\n26\t886\n44\t199\n12\t1\n22\t694\n47\t166\n1\t4\n52\t132\n13\t3\n16\t24\n6\t2\n3\t2\n20\t395\n40\t366\n94\t1\n57\t88\n54\t74\n48\t158\n19\t193\n64\t21\n41\t223\n43\t198\n15\t13\n37\t384\n61\t38\n17\t42\n9\t1\n72\t7\n35\t577\n59\t49\n55\t91\n4\t1\n100\t10\n39\t320\n23\t839\n49\t132\n51\t100\n69\t16\n63\t42\n10\t1\n77\t4\n50\t189\n45\t226\n38\t354\n82\t1\n80\t4\n25\t969\n73\t6\n24\t898\n70\t22\n62\t29\n29\t731\n21\t584\n98\t1\n32\t560\n60\t56\n75\t5\n56\t76\n58\t55\n33\t530\n11\t3\n83\t1\n68\t16\n71\t5\n14\t6\n42\t255\n79\t2\n2\t1\n30\t778\n99\t3\n66\t24\n46\t144\n67\t19\n0\t10\n18\t78\n74\t3\n36\t398\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526527903932_-2050081118",
+      "id": "20180517-123143_891674859",
+      "dateCreated": "2018-05-17 12:31:43.932",
+      "dateStarted": "2018-05-17 12:32:00.144",
+      "dateFinished": "2018-05-17 12:32:00.669",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "다듬어서 만든 최종 쿼리: name aliasing, order by 추가",
+      "text": "%sql\nSELECT age, COUNT(*) AS cnt\nFROM survey\nWHERE age IS NOT NULL\nGROUP BY age\nORDER BY age",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-19 03:22:47.692",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "age": "string",
+                      "cnt": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": true
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "age",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "cnt",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "age\tcnt\n0\t10\n1\t4\n2\t1\n3\t2\n4\t1\n6\t2\n9\t1\n10\t1\n11\t3\n12\t1\n13\t3\n14\t6\n15\t13\n16\t24\n17\t42\n18\t78\n19\t193\n20\t395\n21\t584\n22\t694\n23\t839\n24\t898\n25\t969\n26\t886\n27\t842\n28\t761\n29\t731\n30\t778\n31\t597\n32\t560\n33\t530\n34\t531\n35\t577\n36\t398\n37\t384\n38\t354\n39\t320\n40\t366\n41\t223\n42\t255\n43\t198\n44\t199\n45\t226\n46\t144\n47\t166\n48\t158\n49\t132\n50\t189\n51\t100\n52\t132\n53\t83\n54\t74\n55\t91\n56\t76\n57\t88\n58\t55\n59\t49\n60\t56\n61\t38\n62\t29\n63\t42\n64\t21\n65\t28\n66\t24\n67\t19\n68\t16\n69\t16\n70\t22\n71\t5\n72\t7\n73\t6\n74\t3\n75\t5\n76\t3\n77\t4\n78\t1\n79\t2\n80\t4\n82\t1\n83\t1\n94\t1\n98\t1\n99\t3\n100\t10\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526440854508_-1762614588",
+      "id": "20180516-122054_1016654968",
+      "dateCreated": "2018-05-16 12:20:54.508",
+      "dateStarted": "2018-05-18 21:37:23.144",
+      "dateFinished": "2018-05-18 21:37:23.943",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## 2) 연령대별 설문자 수: Histogram\n연령대(e.g. 10대, 20대...) 별로 설문자 수를 세어보자!\n이것은 bin width\u003d10 (혹은 #bins\u003d10)인 histogram을 그리는 것과 동일하다.\n\n1. NULL 값들을 제거한다.\n2. 나이를 10개의 구간으로 나눈다: 0 ~ 9, 10 ~ 19, ..., 90 ~ 100\n3. 각 나이가 10개의 구간 중 어디에 속할지 계산한다.",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-17 21:00:05.698",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2) 연령대별 설문자 수: Histogram\u003c/h2\u003e\n\u003cp\u003e연령대(e.g. 10대, 20대\u0026hellip;) 별로 설문자 수를 세어보자!\u003cbr/\u003e이것은 bin width\u003d10 (혹은 #bins\u003d10)인 histogram을 그리는 것과 동일하다.\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eNULL 값들을 제거한다.\u003c/li\u003e\n  \u003cli\u003e나이를 10개의 구간으로 나눈다: 0 ~ 9, 10 ~ 19, \u0026hellip;, 90 ~ 100\u003c/li\u003e\n  \u003cli\u003e각 나이가 10개의 구간 중 어디에 속할지 계산한다.\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526441920267_1527774324",
+      "id": "20180516-123840_1356288619",
+      "dateCreated": "2018-05-16 12:38:40.267",
+      "dateStarted": "2018-05-17 21:00:05.698",
+      "dateFinished": "2018-05-17 21:00:05.704",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nWITH\ntarget (\nSELECT age AS x\nFROM survey\nWHERE age IS NOT NULL\n),\nstats (\nSELECT\n    MIN(x) AS x_min,\n    10 AS num_bins,\n    (MAX(x) - MIN(x)) / 10 AS bin_width\nFROM target\n),\nbin_tmp (\nSELECT\n    x,\n    FLOOR((x - x_min) / bin_width) AS bin\nFROM target CROSS JOIN stats\n),\nbin (\nSELECT\n    x,\n    CASE WHEN bin \u003d num_bins THEN num_bins - 1 ELSE bin END AS bin  -- 마지막 bin의 범위를 90 ~ 99이 아닌 90 ~ 100이 되도록\nFROM bin_tmp CROSS JOIN stats\n)\nSELECT\n    bin,\n    COUNT(*) AS bin_count,\n    AVG(x) AS bin_avg,\n    MIN(x) AS bin_min,\n    MAX(x) AS bin_max,\n    MIN(bin_width) * bin AS bin_start,\n    MIN(bin_width) * (bin + 1) AS bin_end\nFROM bin CROSS JOIN stats\nGROUP BY bin\nORDER BY bin",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-19 03:22:47.867",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "bin": "string",
+                      "cnt": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "pieChart": {}
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "bin_start",
+                  "index": 5.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "bin_count",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {
+          "막대 개수": "20"
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "bin\tbin_count\tbin_avg\tbin_min\tbin_max\tbin_start\tbin_end\n0\t21\t1.7619047619047619\t0\t9\t0.0\t10.0\n1\t364\t17.97252747252747\t10\t19\t10.0\t20.0\n2\t7599\t24.84313725490196\t20\t29\t20.0\t30.0\n3\t5029\t33.79876715052694\t30\t39\t30.0\t40.0\n4\t2067\t43.74020319303338\t40\t49\t40.0\t50.0\n5\t937\t53.54002134471718\t50\t59\t50.0\t60.0\n6\t289\t63.44290657439446\t60\t69\t60.0\t70.0\n7\t58\t72.51724137931035\t70\t79\t70.0\t80.0\n8\t6\t80.83333333333333\t80\t83\t80.0\t90.0\n9\t15\t99.26666666666667\t94\t100\t90.0\t100.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526442689526_1924391257",
+      "id": "20180516-125129_493833945",
+      "dateCreated": "2018-05-16 12:51:29.526",
+      "dateStarted": "2018-05-19 03:02:02.983",
+      "dateFinished": "2018-05-19 03:02:03.604",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## 3) My first dynamic form: Bin 개수 조절 가능하게하기\n모든 interpreter에서 `$ {formName\u003ddefaultValue}`와 같은 형식으로 text dynamic form을 만들 수 있다.",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-17 21:12:59.525",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {
+          "formName": "defaultValue",
+          "{formName": "defaultValue"
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3) My first dynamic form: Bin 개수 조절 가능하게하기\u003c/h2\u003e\n\u003cp\u003e모든 interpreter에서 \u003ccode\u003e$ {formName\u003ddefaultValue}\u003c/code\u003e와 같은 형식으로 text dynamic form을 만들 수 있다.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526444338350_236300651",
+      "id": "20180516-131858_44854027",
+      "dateCreated": "2018-05-16 13:18:58.350",
+      "dateStarted": "2018-05-17 21:12:59.525",
+      "dateFinished": "2018-05-17 21:12:59.528",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nWITH\ntarget (\nSELECT age AS x\nFROM survey\nWHERE age IS NOT NULL\n),\nstats (\nSELECT\n    MIN(x) AS x_min,\n    ${Bin 개수\u003d10} AS num_bins,\n    (MAX(x) - MIN(x)) / ${Bin 개수\u003d10} AS bin_width\nFROM target\n),\nbin_tmp (\nSELECT\n    x,\n    FLOOR((x - x_min) / bin_width) AS bin\nFROM target CROSS JOIN stats\n),\nbin (\nSELECT\n    x,\n    CASE WHEN bin \u003d num_bins THEN num_bins - 1 ELSE bin END AS bin  -- 마지막 bin의 범위를 90 ~ 99이 아닌 90 ~ 100이 되도록\nFROM bin_tmp CROSS JOIN stats\n)\nSELECT\n    bin,\n    COUNT(*) AS bin_count,\n    AVG(x) AS bin_avg,\n    MIN(x) AS bin_min,\n    MAX(x) AS bin_max,\n    MIN(bin_width) * bin AS bin_start,\n    MIN(bin_width) * (bin + 1) AS bin_end\nFROM bin CROSS JOIN stats\nGROUP BY bin\nORDER BY bin",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-19 03:22:47.905",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "bin": "string",
+                      "bin_cnt": "string",
+                      "bin_avg": "string",
+                      "bin_min": "string",
+                      "bin_max": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "bin_start",
+                  "index": 5.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "bin_count",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {
+          "Number of Bins": "10",
+          "막대 개수": "10",
+          "column": "",
+          "Bin 개수": "10",
+          "numBins": ""
+        },
+        "forms": {
+          "Bin 개수": {
+            "type": "TextBox",
+            "name": "Bin 개수",
+            "defaultValue": "10",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "bin\tbin_count\tbin_avg\tbin_min\tbin_max\tbin_start\tbin_end\n0\t21\t1.7619047619047619\t0\t9\t0.0\t10.0\n1\t364\t17.97252747252747\t10\t19\t10.0\t20.0\n2\t7599\t24.84313725490196\t20\t29\t20.0\t30.0\n3\t5029\t33.79876715052694\t30\t39\t30.0\t40.0\n4\t2067\t43.74020319303338\t40\t49\t40.0\t50.0\n5\t937\t53.54002134471718\t50\t59\t50.0\t60.0\n6\t289\t63.44290657439446\t60\t69\t60.0\t70.0\n7\t58\t72.51724137931035\t70\t79\t70.0\t80.0\n8\t6\t80.83333333333333\t80\t83\t80.0\t90.0\n9\t15\t99.26666666666667\t94\t100\t90.0\t100.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1526444432017_63658253",
+      "id": "20180516-132032_1520235003",
+      "dateCreated": "2018-05-16 13:20:32.017",
+      "dateStarted": "2018-05-19 03:00:51.344",
+      "dateFinished": "2018-05-19 03:00:51.883",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-05-19 03:01:06.306",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1526666466306_-916183344",
+      "id": "20180519-030106_1103202673",
+      "dateCreated": "2018-05-19 03:01:06.306",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "1.EDA/1.Histogram using SQL",
+  "id": "2DD39H1CB",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}
